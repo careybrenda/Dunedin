@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"MenuElement.cs"
  * 
@@ -196,12 +196,12 @@ namespace AC
 		{}
 
 
-		protected void CreateUIEvent (UnityEngine.UI.Button uiButton, AC.Menu _menu, UIPointerState uiPointerState = UIPointerState.PointerClick)
+		protected void CreateUIEvent (UnityEngine.UI.Button uiButton, AC.Menu _menu, UIPointerState uiPointerState = UIPointerState.PointerClick, int _slotIndex = 0, bool liveState = true)
 		{
 			if (uiPointerState == UIPointerState.PointerClick)
 			{
 				uiButton.onClick.AddListener (() => {
-					ProcessClickUI (_menu, 0, KickStarter.playerInput.GetMouseState ());
+					ProcessClickUI (_menu, _slotIndex, liveState ? KickStarter.playerInput.GetMouseState () : MouseState.SingleClick);
 				});
 			}
 			else
@@ -211,7 +211,6 @@ namespace AC
 				{
 					eventTrigger = uiButton.gameObject.AddComponent <EventTrigger>();
 				}
-
 				EventTrigger.Entry entry = new EventTrigger.Entry ();
 
 				if (uiPointerState == UIPointerState.PointerDown)
@@ -224,7 +223,7 @@ namespace AC
 				}
 
 				entry.callback.AddListener ((eventData) => {
-					ProcessClickUI (_menu, 0, KickStarter.playerInput.GetMouseState ());
+					ProcessClickUI (_menu, _slotIndex, liveState ? KickStarter.playerInput.GetMouseState () : MouseState.SingleClick);
 				} );
 
 				#if UNITY_4_6 || UNITY_4_7 || UNITY_5_0
@@ -275,9 +274,10 @@ namespace AC
 
 		/**
 		 * <summary>Gets the linked Unity UI GameObject associated with this element.</summary>
+		 * <param name = "slotIndex">The slot index, if the element has multiple slots</param>
 		 * <returns>The Unity UI GameObject associated with the element</returns>
 		 */
-		public virtual GameObject GetObjectToSelect ()
+		public virtual GameObject GetObjectToSelect (int slotIndex = 0)
 		{
 			return null;
 		}
@@ -695,7 +695,28 @@ namespace AC
 				Rect outlineRect = _menu.GetRectAbsolute (GetSlotRectRelative (i));
 				DrawStraightLine.DrawBox (outlineRect, boxColor, 1f, false, 0);
 			}
+		}
 
+
+		/**
+		 * <summary>Gets the element's slot centres, as an array of Vector2s.  This is used when keyboard-navigating menus</summary>
+		 * <param name = "_menu">The parent Menu</param>
+		 * <returns>The element's slot centres, as an array of Vector2s.</returns>
+		 */
+		public Vector2[] GetSlotCentres (AC.Menu _menu)
+		{
+			List<Vector2> slotCentres = new List<Vector2>();
+
+			if (isClickable)
+			{
+				for (int i=0; i<GetNumSlots (); i++)
+				{
+					Vector2 slotCentre = _menu.GetRectAbsolute (GetSlotRectRelative (i)).center;
+					slotCentres.Add (slotCentre);
+				}
+			}
+
+			return slotCentres.ToArray ();
 		}
 
 
@@ -1036,6 +1057,7 @@ namespace AC
 
 			dragOffset = pos;
 		}
+
 
 		/**
 		 * <summary>Gets the drag offset.</summary>

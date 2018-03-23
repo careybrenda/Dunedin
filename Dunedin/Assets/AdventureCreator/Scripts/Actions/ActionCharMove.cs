@@ -176,6 +176,8 @@ namespace AC
 		{
 			if (charToMove)
 			{
+				charToMove.EndPath (movePath);
+
 				if (charToMove is NPC)
 				{
 					NPC npcToMove = (NPC) charToMove;

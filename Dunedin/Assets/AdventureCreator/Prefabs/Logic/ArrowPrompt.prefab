@@ -83,6 +83,8 @@ MonoBehaviour:
       width: 0
       height: 0
   disableHotspots: 1
+  positionFactor: 1
+  scaleFactor: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

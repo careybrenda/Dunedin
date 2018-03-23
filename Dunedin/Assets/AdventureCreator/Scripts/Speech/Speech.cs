@@ -123,7 +123,10 @@ namespace AC
 					}
 				}
 
-				_speaker.ClearExpression ();
+				if (KickStarter.speechManager.resetExpressionsEachLine)
+				{
+					_speaker.ClearExpression ();
+				}
 
 				if (!_noAnimation)
 				{
@@ -323,6 +326,16 @@ namespace AC
 		}
 
 
+		/** Updates the speech volume to the level set in Options.  This should be called whenever the Speech volume level is changed. */
+		public void UpdateVolume ()
+		{
+			if (speaker)
+			{
+				speaker.SetSpeechVolume (Options.optionsData.speechVolume);
+			}
+		}
+
+
 		/**
 		 * <summary>A special-case Constructor purely used to display text without tags when exporting script-sheets.</summary>
 		 * <param name = "_message">The subtitle text to display</param>
@@ -500,6 +513,16 @@ namespace AC
 					if (isBackground)
 					{
 						EndMessage ();
+					}
+					else
+					{
+						if (!hasAudio || !audioSource.isPlaying)
+						{
+							if (!KickStarter.speechManager.playAnimationForever && speaker != null && speaker.isTalking)
+							{
+								speaker.StopSpeaking ();
+							}
+						}
 					}
 				}
 				else
@@ -1102,7 +1125,6 @@ namespace AC
 						}
 						else
 						{
-							portraitIcon.GetAnimatedRect ();
 							return portraitIcon.GetAnimatedSprite (true);
 						}
 					}

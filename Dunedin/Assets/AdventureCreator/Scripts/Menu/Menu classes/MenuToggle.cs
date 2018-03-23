@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"MenuToggle.cs"
  * 
@@ -167,11 +167,7 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Gets the linked Unity UI GameObject associated with this element.</summary>
-		 * <returns>The Unity UI GameObject associated with the element</returns>
-		 */
-		public override GameObject GetObjectToSelect ()
+		public override GameObject GetObjectToSelect (int slotIndex = 0)
 		{
 			if (uiToggle)
 			{
@@ -209,7 +205,7 @@ namespace AC
 		
 		public override void ShowGUI (Menu menu)
 		{
-			string apiPrefix = "AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\")";
+			string apiPrefix = "(AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\") as AC.MenuToggle)";
 
 			MenuSource source = menu.menuSource;
 			EditorGUILayout.BeginVertical ("Button");

@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"PlayerMovement.cs"
  * 
@@ -269,7 +269,6 @@ namespace AC
 					return;
 				}
 
-				//Vector3 clickPoint = ClickPoint (KickStarter.playerInput.GetMousePosition ());
 				Vector3 clickPoint = GetStraightToCursorClickPoint ();
 				Vector3 moveDirection = clickPoint - KickStarter.player.transform.position;
 				
@@ -282,12 +281,8 @@ namespace AC
 							moveDirection = new Vector3 (moveDirection.x, 0f, moveDirection.y);
 						}
 						
-						bool run = false;
-						if (moveDirection.magnitude > KickStarter.settingsManager.dragRunThreshold)
-						{
-							run = true;
-						}
-						
+						bool run = (moveDirection.magnitude > KickStarter.settingsManager.dragRunThreshold);
+
 						if (KickStarter.playerInput.runLock == PlayerMoveLock.AlwaysRun)
 						{
 							run = true;
@@ -312,7 +307,6 @@ namespace AC
 			}
 			else if (KickStarter.playerInput.GetDragState () == DragState.Player && moveStraightToCursorHoldTime == 0f && (!KickStarter.settingsManager.singleTapStraight || KickStarter.playerInput.CanClick ()))
 			{
-				//Vector3 clickPoint = ClickPoint (KickStarter.playerInput.GetMousePosition ());
 				Vector3 clickPoint = GetStraightToCursorClickPoint ();
 				Vector3 moveDirection = clickPoint - KickStarter.player.transform.position;
 
@@ -325,11 +319,7 @@ namespace AC
 							moveDirection = new Vector3 (moveDirection.x, 0f, moveDirection.y);
 						}
 
-						bool run = false;
-						if (moveDirection.magnitude > KickStarter.settingsManager.dragRunThreshold)
-						{
-							run = true;
-						}
+						bool run = (moveDirection.magnitude > KickStarter.settingsManager.dragRunThreshold);
 
 						if (KickStarter.playerInput.runLock == PlayerMoveLock.AlwaysRun)
 						{
@@ -340,19 +330,22 @@ namespace AC
 							run = false;
 						}
 
-						if (KickStarter.settingsManager.pathfindUpdateFrequency > 0f && moveStraightToCursorUpdateTime == 0f)
+						if (KickStarter.settingsManager.pathfindUpdateFrequency > 0f)// && moveStraightToCursorUpdateTime == 0f)
 						{
-							if (movingFromHold && KickStarter.player.IsPathfinding () && (clickPoint - KickStarter.player.GetTargetPosition (true)).magnitude < KickStarter.settingsManager.destinationAccuracy)
+							if (moveStraightToCursorUpdateTime == 0f)
 							{
-								// Too close, don't update
-							}
-							else
-							{
-								Vector3[] pointArray = KickStarter.navigationManager.navigationEngine.GetPointsArray (KickStarter.player.transform.position, clickPoint, KickStarter.player);
-								KickStarter.player.MoveAlongPoints (pointArray, run);
-								moveStraightToCursorUpdateTime = KickStarter.settingsManager.pathfindUpdateFrequency;
+								if (movingFromHold && KickStarter.player.IsPathfinding () && (clickPoint - KickStarter.player.GetTargetPosition (true)).magnitude < KickStarter.settingsManager.destinationAccuracy)
+								{
+									// Too close, don't update
+								}
+								else
+								{
+									Vector3[] pointArray = KickStarter.navigationManager.navigationEngine.GetPointsArray (KickStarter.player.transform.position, clickPoint, KickStarter.player);
+									KickStarter.player.MoveAlongPoints (pointArray, run);
+									moveStraightToCursorUpdateTime = KickStarter.settingsManager.pathfindUpdateFrequency;
 
-								movingFromHold = true;
+									movingFromHold = true;
+								}
 							}
 						}
 						else
@@ -1087,12 +1080,17 @@ namespace AC
 		}
 
 
+		private GameObject clickPrefabInstance;
 		private void ShowClick (Vector3 clickPoint)
 		{
 			if (KickStarter.settingsManager && KickStarter.settingsManager.clickPrefab)
 			{
-				Destroy (GameObject.Find (KickStarter.settingsManager.clickPrefab.name + "(Clone)"));
-				Instantiate (KickStarter.settingsManager.clickPrefab, clickPoint, Quaternion.identity);
+				if (clickPrefabInstance != null && clickPrefabInstance.activeSelf)
+				{
+					KickStarter.sceneChanger.ScheduleForDeletion (clickPrefabInstance);
+				}
+				Transform clickPrefabTransform = Instantiate (KickStarter.settingsManager.clickPrefab, clickPoint, Quaternion.identity) as Transform;
+				clickPrefabInstance = clickPrefabTransform.gameObject;
 			}
 		}
 

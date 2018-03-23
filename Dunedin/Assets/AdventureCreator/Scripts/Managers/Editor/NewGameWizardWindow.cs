@@ -227,7 +227,7 @@ namespace AC
 				AssetDatabase.RenameAsset ("Assets/" + managerPath + "/ActionsManager.asset", gameName + "_ActionsManager");
 				references.actionsManager = (ActionsManager) t;
 				AdventureCreator.RefreshActions ();
-				ActionsManager defaultActionsManager = AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Default/Default_ActionsManager.asset", typeof(ActionsManager)) as ActionsManager;
+				ActionsManager defaultActionsManager = AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Default/Default_ActionsManager.asset", typeof(ActionsManager)) as ActionsManager;
 				if (defaultActionsManager != null)
 				{
 					references.actionsManager.defaultClass = defaultActionsManager.defaultClass;
@@ -256,7 +256,7 @@ namespace AC
 				AssetDatabase.RenameAsset ("Assets/" + managerPath + "/MenuManager.asset", gameName + "_MenuManager");
 				references.menuManager = (MenuManager) t;
 
-				CursorManager defaultCursorManager = AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Default/Default_CursorManager.asset", typeof(CursorManager)) as CursorManager;
+				CursorManager defaultCursorManager = AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Default/Default_CursorManager.asset", typeof(CursorManager)) as CursorManager;
 				if (wizardMenu == WizardMenu.Blank)
 				{
 					if (defaultCursorManager != null)
@@ -289,7 +289,7 @@ namespace AC
 					references.cursorManager.allowMainCursor = true;
 					EditorUtility.SetDirty (references.cursorManager);
 
-					MenuManager defaultMenuManager = AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Default/Default_MenuManager.asset", typeof(MenuManager)) as MenuManager;
+					MenuManager defaultMenuManager = AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Default/Default_MenuManager.asset", typeof(MenuManager)) as MenuManager;
 					if (defaultMenuManager != null)
 					{
 						#if UNITY_EDITOR
@@ -355,7 +355,7 @@ namespace AC
 				AssetDatabase.SaveAssets ();
 				if (GameObject.FindObjectOfType <KickStarter>() == null)
 				{
-					bool initScene = EditorUtility.DisplayDialog ("Setup scene?", "Process complete.  Would you like to organise the scene objects to begin working?  This can be done at any time within the Scene Manager.", "Yes", "No");
+					bool initScene = EditorUtility.DisplayDialog ("Organise scene?", "Process complete.  Would you like to organise the scene objects to begin working?  This can be done at any time within the Scene Manager.", "Yes", "No");
 					if (initScene)
 					{
 						references.sceneManager.InitialiseObjects ();
@@ -532,13 +532,13 @@ namespace AC
 
 				if (wizardMenu == WizardMenu.DefaultAC || wizardMenu == WizardMenu.DefaultUnityUI)
 				{
-					MenuManager defaultMenuManager = AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Default/Default_MenuManager.asset", typeof(MenuManager)) as MenuManager;
-					CursorManager defaultCursorManager = AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Default/Default_CursorManager.asset", typeof(CursorManager)) as CursorManager;
-					ActionsManager defaultActionsManager = AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Default/Default_ActionsManager.asset", typeof(ActionsManager)) as ActionsManager;
+					MenuManager defaultMenuManager = AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Default/Default_MenuManager.asset", typeof(MenuManager)) as MenuManager;
+					CursorManager defaultCursorManager = AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Default/Default_CursorManager.asset", typeof(CursorManager)) as CursorManager;
+					ActionsManager defaultActionsManager = AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Default/Default_ActionsManager.asset", typeof(ActionsManager)) as ActionsManager;
 
 					if (defaultMenuManager == null || defaultCursorManager == null || defaultActionsManager == null)
 					{
-						EditorGUILayout.HelpBox ("Unable to locate the default Manager assets in '" + Resource.mainFolderPath + "/Default'. These assets must be imported in order to start with the default interface.", MessageType.Warning);
+						EditorGUILayout.HelpBox ("Unable to locate the default Manager assets in '" + Resource.MainFolderPath + "/Default'. These assets must be imported in order to start with the default interface.", MessageType.Warning);
 					}
 				}
 

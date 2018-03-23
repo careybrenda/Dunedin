@@ -1,7 +1,7 @@
 ﻿/*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"NavMeshAgentIntegration.cs"
  * 
@@ -47,6 +47,7 @@ namespace AC
 	public class NavMeshAgentIntegration : MonoBehaviour
 	{
 
+		public bool useACForSpeedValues;
 		public float runSpeedFactor = 2f;
 		public bool useACForTurning = true;
 
@@ -184,7 +185,14 @@ namespace AC
 				 * Scale the speed if we are running. Note that the original speed is recorded in Start(), so you will need to replay the scene
 				 * to see changes made to the NavMeshAgent's "speed" variable take effect.
 				 */
-				navMeshAgent.speed = (_char.isRunning) ? (originalSpeed * runSpeedFactor) : originalSpeed;
+				if (useACForSpeedValues)
+				{
+					navMeshAgent.speed = (_char.isRunning) ? (_char.runSpeedScale) : _char.walkSpeedScale;
+				}
+				else
+				{
+					navMeshAgent.speed = (_char.isRunning) ? (originalSpeed * runSpeedFactor) : originalSpeed;
+				}
 
 				/*
 				 * Provided the NavMeshAgent is on a NavMesh, set the destination point

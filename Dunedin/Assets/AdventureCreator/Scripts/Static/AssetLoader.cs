@@ -17,6 +17,10 @@ using System.Collections;
 using UnityEngine.Timeline;
 #endif
 
+#if UNITY_5_6_OR_NEWER
+using UnityEngine.Video;
+#endif
+
 namespace AC
 {
 
@@ -33,6 +37,9 @@ namespace AC
 		private static Object[] actionListAssets;
 		#if UNITY_2017_1_OR_NEWER
 		private static Object[] timelineAssets;
+		#endif
+		#if UNITY_5_6_OR_NEWER
+		private static Object[] videoAssets;
 		#endif
 
 
@@ -99,6 +106,12 @@ namespace AC
 				newFile = RetrieveTimelines (_name);
 			}
 			#endif
+			#if UNITY_5_6_OR_NEWER
+			else if (originalFile is VideoClip)
+			{
+				newFile = RetrieveVideoClips (_name);
+			}
+			#endif
 
 			return (newFile != null) ? (T) newFile : originalFile;
 		}
@@ -149,6 +162,15 @@ namespace AC
 		{
 			timelineAssets = RetrieveAssetFiles <TimelineAsset> (timelineAssets, "Timelines");
 			return GetAssetFile <TimelineAsset> (timelineAssets, _name);
+		}
+		#endif
+
+
+		#if UNITY_5_6_OR_NEWER
+		private static VideoClip RetrieveVideoClips (string _name)
+		{
+			videoAssets = RetrieveAssetFiles <VideoClip> (videoAssets, "VideoClips");
+			return GetAssetFile <VideoClip> (videoAssets, _name);
 		}
 		#endif
 

@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"PlayerCursor.cs"
  * 
@@ -359,7 +359,7 @@ namespace AC
 					pulseDirection = 0;
 				}
 				
-				if (KickStarter.runtimeInventory.SelectedItem != null && KickStarter.runtimeInventory.SelectedItem.canCarryMultiple)
+				if (KickStarter.runtimeInventory.SelectedItem != null && KickStarter.runtimeInventory.SelectedItem.canCarryMultiple && !KickStarter.runtimeInventory.SelectedItem.CanSelectSingle ())
 				{
 					KickStarter.runtimeInventory.DrawInventoryCount (KickStarter.playerInput.GetMousePosition (), KickStarter.cursorManager.inventoryCursorSize, KickStarter.runtimeInventory.SelectedItem.count);
 				}
@@ -411,7 +411,19 @@ namespace AC
 					if (KickStarter.playerInteraction.GetActiveHotspot () != null && KickStarter.playerInteraction.GetActiveHotspot ().IsSingleInteraction ())
 					{
 						selectedCursor = -1;
-						ShowContextIcons ();
+
+						if (KickStarter.cursorManager.allowInteractionCursor)
+						{
+							ShowContextIcons ();
+						}
+						else if (KickStarter.cursorManager.mouseOverIcon.texture != null)
+						{
+							DrawIcon (KickStarter.cursorManager.mouseOverIcon, false);
+						}
+						else
+						{
+							DrawMainCursor ();
+						}
 					}
 					else if (selectedCursor >= 0)
 					{

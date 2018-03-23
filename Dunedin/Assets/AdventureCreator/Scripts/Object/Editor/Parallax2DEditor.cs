@@ -21,6 +21,7 @@ namespace AC
 		public override void OnInspectorGUI ()
 		{
 			EditorGUILayout.BeginVertical ("Button");
+			_target.reactsTo = (ParallaxReactsTo) EditorGUILayout.EnumPopup ("Reacts to:", _target.reactsTo);
 			_target.depth = EditorGUILayout.FloatField ("Depth:", _target.depth);
 			EditorGUILayout.EndVertical ();
 

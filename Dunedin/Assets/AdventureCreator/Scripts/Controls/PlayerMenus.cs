@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"PlayerMenus.cs"
  * 
@@ -186,7 +186,9 @@ namespace AC
 
 		private void CreateEventSystem ()
 		{
-			if (GameObject.FindObjectOfType <UnityEngine.EventSystems.EventSystem>() == null)
+			UnityEngine.EventSystems.EventSystem localEventSystem = GameObject.FindObjectOfType <UnityEngine.EventSystems.EventSystem>();
+
+			if (localEventSystem == null)
 			{
 				UnityEngine.EventSystems.EventSystem _eventSystem = null;
 
@@ -205,12 +207,14 @@ namespace AC
 
 				if (_eventSystem != null)
 				{
-					if (GameObject.Find ("_UI"))
-					{
-						_eventSystem.transform.SetParent (GameObject.Find ("_UI").transform);
-					}
 					eventSystem = _eventSystem;
 				}
+			}
+			else if (eventSystem == null)
+			{
+				eventSystem = localEventSystem;
+
+				ACDebug.LogWarning ("A local EventSystem object was found in the scene.  This will override the one created by AC, and may cause problems.  A custom EventSystem prefab can be assigned in the Menu Manager.", localEventSystem);
 			}
 		}
 
@@ -555,6 +559,18 @@ namespace AC
 									}
 								}
 							}
+							else if (isACMenu && menu.elements[j] is MenuInteraction)
+							{
+								MenuInteraction menuInteraction = (MenuInteraction) menu.elements[j];
+								if (menuInteraction.IsDefaultIcon)
+								{
+									menu.elements[j].Display (highlightedStyle, i, menu.GetZoom (), false);
+								}
+								else
+								{
+									menu.elements[j].Display (normalStyle, i, menu.GetZoom (), false);
+								}
+							}
 							else if (isACMenu)
 							{
 								menu.elements[j].Display (normalStyle, i, menu.GetZoom (), false);
@@ -620,7 +636,7 @@ namespace AC
 					}
 					else if (menu.uiPositionType == UIPositionType.FollowCursor)
 					{
-						if (menu.canvas.renderMode == RenderMode.WorldSpace)
+						if (menu.canvas != null && menu.canvas.renderMode == RenderMode.WorldSpace)
 						{
 							screenPosition = new Vector2 (invertedMouse.x, Screen.height + 1f - invertedMouse.y);
 							Vector3 worldPosition = menu.canvas.worldCamera.ScreenToWorldPoint (new Vector3 (screenPosition.x, screenPosition.y, 10f));
@@ -699,11 +715,17 @@ namespace AC
 					else if (menu.uiPositionType == UIPositionType.AboveSpeakingCharacter)
 					{
 						Char speaker = null;
+						bool canMove = true;
 						if (dupSpeechMenus.Contains (menu))
 						{
 							if (menu.speech != null)
 							{
 								speaker = menu.speech.GetSpeakingCharacter ();
+
+								if (!menu.moveWithCharacter)
+								{
+									canMove = !menu.HasMoved;
+								}
 							}
 						}
 						else
@@ -711,7 +733,7 @@ namespace AC
 							speaker = KickStarter.dialog.GetSpeakingCharacter ();
 						}
 
-						if (speaker != null)
+						if (speaker != null && canMove)
 						{
 							if (menu.canvas != null && menu.canvas.renderMode == RenderMode.WorldSpace)
 							{
@@ -841,11 +863,17 @@ namespace AC
 			else if (menu.positionType == AC_PositionType.AboveSpeakingCharacter)
 			{
 				Char speaker = null;
+				bool canMove = true;
 				if (dupSpeechMenus.Contains (menu))
 				{
 					if (menu.speech != null)
 					{
 						speaker = menu.speech.GetSpeakingCharacter ();
+
+						if (!menu.moveWithCharacter)
+						{
+							canMove = !menu.HasMoved;
+						}
 					}
 				}
 				else
@@ -853,7 +881,7 @@ namespace AC
 					speaker = KickStarter.dialog.GetSpeakingCharacter ();
 				}
 
-				if (speaker != null)
+				if (speaker != null && canMove)
 				{
 					Vector2 screenPosition = speaker.GetScreenCentre ();
 					menu.SetCentre (new Vector2 (screenPosition.x + (menu.manualPosition.x / 100f) - 0.5f,
@@ -899,7 +927,7 @@ namespace AC
 				}
 				else if (menu.canvas.renderMode == RenderMode.WorldSpace)
 				{
-					menu.SetCentre3D (hotspot.transform.position);
+					menu.SetCentre3D (hotspot.GetIconPosition ());
 				}
 				else
 				{
@@ -958,6 +986,30 @@ namespace AC
 			else if (menu.appearType == AppearType.DuringGameplay)
 			{
 				if (KickStarter.stateHandler.gameState == GameState.Normal && !menu.isLocked)
+				{
+					if (menu.IsOff ())
+					{
+						menu.TurnOn (true);
+					}
+
+					if (menu.IsOn () && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks)
+					{
+						foundMouseOverMenu = true;
+					}
+				}
+				else if (KickStarter.stateHandler.gameState == GameState.Paused || KickStarter.stateHandler.gameState == GameState.DialogOptions)
+				{
+					menu.TurnOff (true);
+				}
+				else if (menu.IsOn () && KickStarter.actionListManager.IsGameplayBlocked ())
+				{
+					menu.TurnOff (true);
+				}
+			}
+
+			else if (menu.appearType == AppearType.DuringGameplayAndConversations)
+			{
+				if (!menu.isLocked && (KickStarter.stateHandler.gameState == GameState.Normal || KickStarter.stateHandler.gameState == GameState.DialogOptions))
 				{
 					if (menu.IsOff ())
 					{
@@ -1088,7 +1140,7 @@ namespace AC
 			
 			else if (menu.appearType == AppearType.DuringConversation)
 			{
-				if (KickStarter.playerInput.activeConversation != null && KickStarter.stateHandler.gameState == GameState.DialogOptions)
+				if (KickStarter.playerInput.IsInConversation () && KickStarter.stateHandler.gameState == GameState.DialogOptions)
 				{
 					menu.TurnOn (true);
 				}
@@ -1434,7 +1486,6 @@ namespace AC
 							if (KickStarter.playerInput.InputGetButtonDown (menu.elements[j].alternativeInputButton))
 							{
 								CheckClick (menu, menu.elements[j], i, MouseState.SingleClick);
-								//	element.ProcessClick (menu, i, MouseState.SingleClick);
 							}
 						}
 					}
@@ -1446,14 +1497,7 @@ namespace AC
 						{
 							if (KickStarter.sceneSettings && menu.elements[j].hoverSound && lastElementIdentifier != (menu.IDString + menu.elements[j].IDString + i.ToString ()))
 							{
-								if (menu.CanCurrentlyKeyboardControl () && lastElementIdentifier == "")
-								{
-									// Bypass when auto-selected
-								}
-								else
-								{
-									KickStarter.sceneSettings.PlayDefaultSound (menu.elements[j].hoverSound, false);
-								}
+								KickStarter.sceneSettings.PlayDefaultSound (menu.elements[j].hoverSound, false);
 							}
 							
 							elementIdentifier = menu.IDString + menu.elements[j].IDString + i.ToString ();
@@ -1671,6 +1715,18 @@ namespace AC
 
 
 		/**
+		 * The EventSystem used by AC Menus.
+		 */
+		public UnityEngine.EventSystems.EventSystem EventSystem
+		{
+			get
+			{
+				return eventSystem;
+			}
+		}
+
+
+		/**
 		 * <summary>De-selects the Unity UI EventSystem's selected gameobject if it is associated with a given Menu.</summary>
 		 * <param name = "_menu">The Menu to deselect</param>
 		 * <returns>True if the Unity UI EventSystem's selected gameobject was in the given Menu</returns>
@@ -1709,9 +1765,9 @@ namespace AC
 			}
 			else if (KickStarter.settingsManager.inputMethod == InputMethod.KeyboardOrController)
 			{
-				if (menu.IsElementSelectedByEventSystem (elementIndex, i))
+				if (menu.menuSource != MenuSource.AdventureCreator)
 				{
-					return true;
+					return menu.IsElementSelectedByEventSystem (elementIndex, i);
 				}
 
 				if (KickStarter.stateHandler.gameState == GameState.Normal)
@@ -1989,10 +2045,6 @@ namespace AC
 				mouseOverInventory = foundMouseOverInventory;
 				canKeyboardControl = foundCanKeyboardControl;
 
-				if (!mouseOverMenu && !mouseOverInteractionMenu && mouseOverInventory)
-				{
-					menuIdentifier = elementIdentifier = "";
-				}
 				if (mouseOverMenuName != null && (lastElementIdentifier != elementIdentifier || lastMenuIdentifier != menuIdentifier))
 				{
 					KickStarter.eventManager.Call_OnMouseOverMenuElement (mouseOverMenuName, mouseOverElementName, mouseOverElementSlot);
@@ -2191,7 +2243,7 @@ namespace AC
 						}
 						else
 						{
-							if (menu.appearType == AppearType.DuringConversation && KickStarter.playerInput.activeConversation != null)
+							if (menu.appearType == AppearType.DuringConversation && KickStarter.playerInput.IsInConversation ())
 							{
 								ACDebug.LogWarning ("Cannot turn off Menu '" + menu.title + "' as a Conversation is currently active.");
 								continue;
@@ -2495,7 +2547,7 @@ namespace AC
 		 */
 		public static bool IsSavingLocked (Action _actionToIgnore = null)
 		{
-			if (KickStarter.stateHandler.gameState == GameState.DialogOptions || (KickStarter.stateHandler.gameState == GameState.Paused && KickStarter.playerInput.activeConversation != null))
+			if (KickStarter.stateHandler.gameState == GameState.DialogOptions || (KickStarter.stateHandler.gameState == GameState.Paused && KickStarter.playerInput.IsInConversation ()))
 			{
 				return true;
 			}
@@ -2711,12 +2763,22 @@ namespace AC
 
 			if (objectToSelect != null)
 			{
-				StartCoroutine (SelectUIElement (objectToSelect));
+				SelectUIElement (objectToSelect);
 			}
 		}
 
 
-		private IEnumerator SelectUIElement (GameObject objectToSelect)
+		/**
+		 * <summary>Selects a Unity UI GameObject</summary>
+		 * <param name = "objectToSelect">The UI GameObject to select</param>
+		 */
+		public void SelectUIElement (GameObject objectToSelect)
+		{
+			StartCoroutine (SelectUIElementCoroutine (objectToSelect));
+		}
+
+
+		private IEnumerator SelectUIElementCoroutine (GameObject objectToSelect)
 		{
 			eventSystem.SetSelectedGameObject (null);
 			yield return null;

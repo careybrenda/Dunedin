@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"Sound.cs"
  * 
@@ -56,6 +56,24 @@ namespace AC
 		private void Awake ()
 		{
 			Initialise ();
+		}
+
+
+		private void OnEnable ()
+		{
+			if (KickStarter.stateHandler) KickStarter.stateHandler.Register (this);
+		}
+
+
+		private void Start ()
+		{
+			if (KickStarter.stateHandler) KickStarter.stateHandler.Register (this);
+		}
+
+
+		private void OnDisable ()
+		{
+			if (KickStarter.stateHandler) KickStarter.stateHandler.Unregister (this);
 		}
 
 
@@ -129,6 +147,8 @@ namespace AC
 				{
 					SetMaxVolume ();
 				}
+
+				SnapSmoothVolume ();
 			}
 			else
 			{
@@ -226,9 +246,15 @@ namespace AC
 				}
 				else
 				{
-					smoothVolume = maxVolume;
+					SnapSmoothVolume ();
 				}
 			}
+		}
+
+
+		private void SnapSmoothVolume ()
+		{
+			smoothVolume = maxVolume;
 		}
 		
 

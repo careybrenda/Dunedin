@@ -1,7 +1,7 @@
 ﻿/*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"RememberTimeline.cs"
  * 
@@ -185,9 +185,13 @@ namespace AC
 	public class TimelineData : RememberData
 	{
 
+		/** True if the Timline is playing */
 		public bool isPlaying;
+		/** The current time along the Timeline */
 		public double currentTime;
+		/** Which objects are loaded into the tracks */
 		public string trackObjectData;
+		/** The Instance ID of the current Timeline asset */
 		public string timelineAssetID;
 
 		

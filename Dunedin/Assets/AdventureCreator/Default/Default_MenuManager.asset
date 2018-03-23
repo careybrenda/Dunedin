@@ -89,6 +89,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -194,6 +196,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -250,6 +253,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -306,6 +310,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -512,6 +517,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -519,6 +525,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -528,6 +535,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -535,6 +543,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -544,6 +553,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -551,11 +561,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 2800000, guid: eb99ff755ebaf47e5b8c047c27911fe3, type: 3}
@@ -569,7 +581,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -597,6 +612,7 @@ MonoBehaviour:
   displayType: 1
   uiHideStyle: 0
   actionListOnWrongIngredients: {fileID: 0}
+  linkUIGraphic: 0
 --- !u!114 &11451398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -809,6 +825,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -816,6 +833,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -825,6 +843,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -832,6 +851,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -841,6 +861,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -848,11 +869,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 2800000, guid: eb99ff755ebaf47e5b8c047c27911fe3, type: 3}
@@ -866,7 +889,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -907,6 +933,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -914,6 +941,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -923,6 +951,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -930,6 +959,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -939,6 +969,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -946,11 +977,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 279f107139a144b54983fac4b9a2a288, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -964,7 +997,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -995,7 +1031,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -1010,7 +1049,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -1035,6 +1077,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1042,6 +1085,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -1051,6 +1095,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1058,6 +1103,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1067,6 +1113,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1074,11 +1121,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1092,7 +1141,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1131,6 +1183,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1138,6 +1191,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -1147,6 +1201,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1154,6 +1209,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1163,6 +1219,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1170,11 +1227,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 08b6cbc1dc39b4a82a228dc280d48120, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1188,7 +1247,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1216,6 +1278,7 @@ MonoBehaviour:
   displayType: 1
   uiHideStyle: 0
   actionListOnWrongIngredients: {fileID: 0}
+  linkUIGraphic: 0
 --- !u!114 &11451404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1272,6 +1335,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 707028
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 0
@@ -1280,6 +1344,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items:
   - label: Sword
     id: 0
@@ -1297,6 +1362,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1304,6 +1370,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -1313,6 +1380,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1320,6 +1388,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1329,6 +1398,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1336,11 +1406,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 2800000, guid: eb99ff755ebaf47e5b8c047c27911fe3, type: 3}
@@ -1354,7 +1426,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1395,6 +1470,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1402,6 +1478,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -1411,6 +1488,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1418,6 +1496,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1427,6 +1506,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1434,11 +1514,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 279f107139a144b54983fac4b9a2a288, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1452,7 +1534,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1483,7 +1568,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -1498,7 +1586,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -1523,6 +1614,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1530,6 +1622,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -1539,6 +1632,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1546,6 +1640,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1555,6 +1650,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1562,11 +1658,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1580,7 +1678,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1619,6 +1720,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1626,6 +1728,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -1635,6 +1738,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1642,6 +1746,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1651,6 +1756,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1658,11 +1764,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 08b6cbc1dc39b4a82a228dc280d48120, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1676,7 +1784,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1715,6 +1826,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1722,6 +1834,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -1731,6 +1844,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1738,6 +1852,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1747,6 +1862,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1754,11 +1870,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 1
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: cc3fa24605c3c4b0081ccfc43043abf8, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1772,7 +1890,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1811,6 +1932,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1818,6 +1940,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -1827,6 +1950,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1834,6 +1958,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1843,6 +1968,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1850,11 +1976,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1868,7 +1996,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -1907,6 +2038,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1914,6 +2046,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -1923,6 +2056,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1930,6 +2064,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -1939,6 +2074,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -1946,11 +2082,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 15d7eafd0c5404e2a9e1dbb4e1ec1c01, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -1964,7 +2102,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2003,6 +2144,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2010,6 +2152,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -2019,6 +2162,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2026,6 +2170,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2035,6 +2180,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2042,11 +2188,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 4481dd2987b4f4534a04773c0aeff9d4, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2060,7 +2208,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2099,6 +2250,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2106,6 +2258,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -2115,6 +2268,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2122,6 +2276,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2131,6 +2286,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2138,11 +2294,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 6d8f6b1471e974f078a2c5f17dfca38a, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2156,7 +2314,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2195,6 +2356,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2202,6 +2364,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -2211,6 +2374,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2218,6 +2382,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2227,6 +2392,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2234,11 +2400,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2252,7 +2420,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2291,6 +2462,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2298,6 +2470,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -2307,6 +2480,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2314,6 +2488,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2323,6 +2498,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2330,11 +2506,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2348,7 +2526,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2387,6 +2568,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2394,6 +2576,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -2403,6 +2586,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2410,6 +2594,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2419,6 +2604,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2426,11 +2612,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b46bce0a70ce045a1911b30b25f228c1, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2444,7 +2632,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2483,6 +2674,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2490,6 +2682,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -2499,6 +2692,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2506,6 +2700,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2515,6 +2710,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2522,11 +2718,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 76294c76103d144be8f4715034382d57, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2540,7 +2738,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2581,6 +2782,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2588,6 +2790,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -2597,6 +2800,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2604,6 +2808,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2613,6 +2818,7 @@ MonoBehaviour:
       floatVal: 69
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2620,11 +2826,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 50ecee34e335c4c4eacb1cb9d903cd34, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2638,7 +2846,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2669,7 +2880,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -2684,7 +2898,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Talk to
         lineID: -1
@@ -2699,7 +2916,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -2724,6 +2944,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2731,6 +2952,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -2740,6 +2962,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2747,6 +2970,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2756,6 +2980,7 @@ MonoBehaviour:
       floatVal: 5
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2763,11 +2988,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2781,7 +3008,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2823,6 +3053,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2830,6 +3061,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -2839,6 +3071,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2846,6 +3079,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -2855,6 +3089,7 @@ MonoBehaviour:
       floatVal: 21
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -2862,11 +3097,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 2013f525787f047ebb05cd6137631b50, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -2880,7 +3117,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -2963,6 +3203,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -3340,6 +3582,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -3402,6 +3645,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 325448
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 0
@@ -3410,6 +3654,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items:
   - label: Sword
     id: 0
@@ -3427,6 +3672,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3434,6 +3680,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -3443,6 +3690,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3450,6 +3698,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -3459,6 +3708,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3466,11 +3716,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 2800000, guid: eb99ff755ebaf47e5b8c047c27911fe3, type: 3}
@@ -3484,7 +3736,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -3525,6 +3780,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3532,6 +3788,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -3541,6 +3798,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3548,6 +3806,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -3557,6 +3816,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3564,11 +3824,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 279f107139a144b54983fac4b9a2a288, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -3582,7 +3844,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -3613,7 +3878,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -3628,7 +3896,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -3653,6 +3924,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3660,6 +3932,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -3669,6 +3942,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3676,6 +3950,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -3685,6 +3960,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3692,11 +3968,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -3710,7 +3988,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -3749,6 +4030,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3756,6 +4038,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -3765,6 +4048,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3772,6 +4056,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -3781,6 +4066,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3788,11 +4074,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 08b6cbc1dc39b4a82a228dc280d48120, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -3806,7 +4094,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -3845,6 +4136,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3852,6 +4144,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -3861,6 +4154,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3868,6 +4162,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -3877,6 +4172,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3884,11 +4180,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 1
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: cc3fa24605c3c4b0081ccfc43043abf8, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -3902,7 +4200,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -3941,6 +4242,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3948,6 +4250,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -3957,6 +4260,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3964,6 +4268,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -3973,6 +4278,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -3980,11 +4286,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -3998,7 +4306,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4037,6 +4348,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4044,6 +4356,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -4053,6 +4366,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4060,6 +4374,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4069,6 +4384,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4076,11 +4392,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 15d7eafd0c5404e2a9e1dbb4e1ec1c01, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4094,7 +4412,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4133,6 +4454,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4140,6 +4462,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -4149,6 +4472,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4156,6 +4480,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4165,6 +4490,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4172,11 +4498,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 4481dd2987b4f4534a04773c0aeff9d4, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4190,7 +4518,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4229,6 +4560,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4236,6 +4568,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -4245,6 +4578,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4252,6 +4586,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4261,6 +4596,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4268,11 +4604,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 6d8f6b1471e974f078a2c5f17dfca38a, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4286,7 +4624,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4325,6 +4666,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4332,6 +4674,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -4341,6 +4684,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4348,6 +4692,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4357,6 +4702,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4364,11 +4710,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4382,7 +4730,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4421,6 +4772,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4428,6 +4780,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -4437,6 +4790,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4444,6 +4798,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4453,6 +4808,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4460,11 +4816,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4478,7 +4836,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4517,6 +4878,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4524,6 +4886,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -4533,6 +4896,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4540,6 +4904,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4549,6 +4914,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4556,11 +4922,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b46bce0a70ce045a1911b30b25f228c1, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4574,7 +4942,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4613,6 +4984,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4620,6 +4992,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -4629,6 +5002,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4636,6 +5010,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4645,6 +5020,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4652,11 +5028,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 76294c76103d144be8f4715034382d57, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4670,7 +5048,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4711,6 +5092,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4718,6 +5100,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -4727,6 +5110,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4734,6 +5118,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4743,6 +5128,7 @@ MonoBehaviour:
       floatVal: 69
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4750,11 +5136,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 50ecee34e335c4c4eacb1cb9d903cd34, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4768,7 +5156,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4799,7 +5190,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -4814,7 +5208,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Talk to
         lineID: -1
@@ -4829,7 +5226,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -4854,6 +5254,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4861,6 +5262,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -4870,6 +5272,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4877,6 +5280,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4886,6 +5290,7 @@ MonoBehaviour:
       floatVal: 5
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4893,11 +5298,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -4911,7 +5318,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -4953,6 +5363,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4960,6 +5371,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -4969,6 +5381,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4976,6 +5389,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -4985,6 +5399,7 @@ MonoBehaviour:
       floatVal: 21
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -4992,11 +5407,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 2013f525787f047ebb05cd6137631b50, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -5010,7 +5427,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5234,6 +5654,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 295142
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 5
@@ -5242,6 +5663,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items:
   - label: Sword
     id: 0
@@ -5259,6 +5681,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5266,6 +5689,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -5275,6 +5699,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5282,6 +5707,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5291,6 +5717,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5298,11 +5725,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 2800000, guid: eb99ff755ebaf47e5b8c047c27911fe3, type: 3}
@@ -5316,7 +5745,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5357,6 +5789,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5364,6 +5797,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -5373,6 +5807,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5380,6 +5815,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5389,6 +5825,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5396,11 +5833,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 279f107139a144b54983fac4b9a2a288, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -5414,7 +5853,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5445,7 +5887,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -5460,7 +5905,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -5485,6 +5933,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5492,6 +5941,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -5501,6 +5951,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5508,6 +5959,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5517,6 +5969,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5524,11 +5977,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -5542,7 +5997,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5581,6 +6039,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5588,6 +6047,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -5597,6 +6057,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5604,6 +6065,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5613,6 +6075,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5620,11 +6083,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 08b6cbc1dc39b4a82a228dc280d48120, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -5638,7 +6103,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5677,6 +6145,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5684,6 +6153,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -5693,6 +6163,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5700,6 +6171,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5709,6 +6181,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5716,11 +6189,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 1
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: cc3fa24605c3c4b0081ccfc43043abf8, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -5734,7 +6209,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5773,6 +6251,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5780,6 +6259,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -5789,6 +6269,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5796,6 +6277,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5805,6 +6287,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5812,11 +6295,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -5830,7 +6315,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5869,6 +6357,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5876,6 +6365,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -5885,6 +6375,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5892,6 +6383,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5901,6 +6393,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5908,11 +6401,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 15d7eafd0c5404e2a9e1dbb4e1ec1c01, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -5926,7 +6421,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -5965,6 +6463,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5972,6 +6471,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -5981,6 +6481,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -5988,6 +6489,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -5997,6 +6499,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6004,11 +6507,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 4481dd2987b4f4534a04773c0aeff9d4, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6022,7 +6527,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6061,6 +6569,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6068,6 +6577,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -6077,6 +6587,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6084,6 +6595,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6093,6 +6605,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6100,11 +6613,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 6d8f6b1471e974f078a2c5f17dfca38a, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6118,7 +6633,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6157,6 +6675,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6164,6 +6683,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -6173,6 +6693,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6180,6 +6701,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6189,6 +6711,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6196,11 +6719,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6214,7 +6739,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6253,6 +6781,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6260,6 +6789,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -6269,6 +6799,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6276,6 +6807,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6285,6 +6817,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6292,11 +6825,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6310,7 +6845,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6349,6 +6887,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6356,6 +6895,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -6365,6 +6905,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6372,6 +6913,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6381,6 +6923,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6388,11 +6931,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b46bce0a70ce045a1911b30b25f228c1, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6406,7 +6951,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6445,6 +6993,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6452,6 +7001,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -6461,6 +7011,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6468,6 +7019,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6477,6 +7029,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6484,11 +7037,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 76294c76103d144be8f4715034382d57, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6502,7 +7057,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6543,6 +7101,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6550,6 +7109,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -6559,6 +7119,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6566,6 +7127,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6575,6 +7137,7 @@ MonoBehaviour:
       floatVal: 69
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6582,11 +7145,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 50ecee34e335c4c4eacb1cb9d903cd34, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6600,7 +7165,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6631,7 +7199,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -6646,7 +7217,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Talk to
         lineID: -1
@@ -6661,7 +7235,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -6686,6 +7263,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6693,6 +7271,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -6702,6 +7281,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6709,6 +7289,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6718,6 +7299,7 @@ MonoBehaviour:
       floatVal: 5
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6725,11 +7307,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6743,7 +7327,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6785,6 +7372,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6792,6 +7380,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -6801,6 +7390,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6808,6 +7398,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -6817,6 +7408,7 @@ MonoBehaviour:
       floatVal: 21
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -6824,11 +7416,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 2013f525787f047ebb05cd6137631b50, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -6842,7 +7436,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -6924,6 +7521,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -6973,6 +7571,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -7070,6 +7670,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -7126,6 +7727,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -7177,6 +7779,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -7276,6 +7880,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 15091686
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 1
@@ -7284,6 +7889,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items:
   - label: Sword
     id: 0
@@ -7301,6 +7907,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7308,6 +7915,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -7317,6 +7925,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7324,6 +7933,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -7333,6 +7943,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7340,11 +7951,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 2800000, guid: eb99ff755ebaf47e5b8c047c27911fe3, type: 3}
@@ -7358,7 +7971,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -7399,6 +8015,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7406,6 +8023,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -7415,6 +8033,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7422,6 +8041,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -7431,6 +8051,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7438,11 +8059,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 279f107139a144b54983fac4b9a2a288, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -7456,7 +8079,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -7487,7 +8113,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -7502,7 +8131,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -7527,6 +8159,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7534,6 +8167,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -7543,6 +8177,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7550,6 +8185,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -7559,6 +8195,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7566,11 +8203,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -7584,7 +8223,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -7623,6 +8265,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7630,6 +8273,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -7639,6 +8283,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7646,6 +8291,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -7655,6 +8301,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7662,11 +8309,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 08b6cbc1dc39b4a82a228dc280d48120, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -7680,7 +8329,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -7719,6 +8371,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7726,6 +8379,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -7735,6 +8389,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7742,6 +8397,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -7751,6 +8407,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7758,11 +8415,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 1
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: cc3fa24605c3c4b0081ccfc43043abf8, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -7776,7 +8435,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -7815,6 +8477,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7822,6 +8485,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -7831,6 +8495,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7838,6 +8503,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -7847,6 +8513,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7854,11 +8521,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -7872,7 +8541,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -7911,6 +8583,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7918,6 +8591,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -7927,6 +8601,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7934,6 +8609,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -7943,6 +8619,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -7950,11 +8627,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 15d7eafd0c5404e2a9e1dbb4e1ec1c01, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -7968,7 +8647,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8007,6 +8689,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8014,6 +8697,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -8023,6 +8707,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8030,6 +8715,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8039,6 +8725,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8046,11 +8733,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 4481dd2987b4f4534a04773c0aeff9d4, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8064,7 +8753,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8103,6 +8795,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8110,6 +8803,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -8119,6 +8813,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8126,6 +8821,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8135,6 +8831,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8142,11 +8839,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 6d8f6b1471e974f078a2c5f17dfca38a, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8160,7 +8859,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8199,6 +8901,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8206,6 +8909,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -8215,6 +8919,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8222,6 +8927,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8231,6 +8937,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8238,11 +8945,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8256,7 +8965,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8295,6 +9007,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8302,6 +9015,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -8311,6 +9025,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8318,6 +9033,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8327,6 +9043,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8334,11 +9051,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8352,7 +9071,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8391,6 +9113,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8398,6 +9121,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -8407,6 +9131,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8414,6 +9139,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8423,6 +9149,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8430,11 +9157,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b46bce0a70ce045a1911b30b25f228c1, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8448,7 +9177,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8487,6 +9219,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8494,6 +9227,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -8503,6 +9237,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8510,6 +9245,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8519,6 +9255,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8526,11 +9263,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 76294c76103d144be8f4715034382d57, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8544,7 +9283,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8585,6 +9327,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8592,6 +9335,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -8601,6 +9345,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8608,6 +9353,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8617,6 +9363,7 @@ MonoBehaviour:
       floatVal: 69
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8624,11 +9371,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 50ecee34e335c4c4eacb1cb9d903cd34, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8642,7 +9391,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8673,7 +9425,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -8688,7 +9443,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Talk to
         lineID: -1
@@ -8703,7 +9461,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -8728,6 +9489,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8735,6 +9497,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -8744,6 +9507,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8751,6 +9515,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8760,6 +9525,7 @@ MonoBehaviour:
       floatVal: 5
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8767,11 +9533,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8785,7 +9553,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -8827,6 +9598,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8834,6 +9606,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -8843,6 +9616,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8850,6 +9624,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -8859,6 +9634,7 @@ MonoBehaviour:
       floatVal: 21
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -8866,11 +9642,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 2013f525787f047ebb05cd6137631b50, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -8884,7 +9662,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -9118,6 +9899,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -9282,6 +10065,7 @@ MonoBehaviour:
   alreadyChosenFontHighlightedColour: {r: 1, g: 1, b: 1, a: 1}
   showIndexNumbers: 0
   uiHideStyle: 0
+  linkUIGraphic: 0
 --- !u!114 &11451450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9327,6 +10111,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -9485,6 +10271,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -9681,6 +10469,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 1790898
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 0
@@ -9689,6 +10478,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items:
   - label: Sword
     id: 0
@@ -9706,6 +10496,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9713,6 +10504,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -9722,6 +10514,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9729,6 +10522,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -9738,6 +10532,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9745,11 +10540,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 2800000, guid: eb99ff755ebaf47e5b8c047c27911fe3, type: 3}
@@ -9763,7 +10560,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -9804,6 +10604,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9811,6 +10612,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -9820,6 +10622,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9827,6 +10630,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -9836,6 +10640,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9843,11 +10648,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 279f107139a144b54983fac4b9a2a288, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -9861,7 +10668,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -9892,7 +10702,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -9907,7 +10720,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: 63
@@ -9932,6 +10748,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9939,6 +10756,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -9948,6 +10766,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9955,6 +10774,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -9964,6 +10784,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -9971,11 +10792,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -9989,7 +10812,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10028,6 +10854,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10035,6 +10862,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10044,6 +10872,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10051,6 +10880,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10060,6 +10890,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10067,11 +10898,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 08b6cbc1dc39b4a82a228dc280d48120, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10085,7 +10918,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10124,6 +10960,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10131,6 +10968,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10140,6 +10978,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10147,6 +10986,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10156,6 +10996,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10163,11 +11004,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 1
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: cc3fa24605c3c4b0081ccfc43043abf8, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10181,7 +11024,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10220,6 +11066,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10227,6 +11074,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10236,6 +11084,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10243,6 +11092,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10252,6 +11102,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10259,11 +11110,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10277,7 +11130,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10316,6 +11172,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10323,6 +11180,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10332,6 +11190,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10339,6 +11198,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10348,6 +11208,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10355,11 +11216,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 15d7eafd0c5404e2a9e1dbb4e1ec1c01, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10373,7 +11236,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10412,6 +11278,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10419,6 +11286,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10428,6 +11296,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10435,6 +11304,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10444,6 +11314,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10451,11 +11322,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 4481dd2987b4f4534a04773c0aeff9d4, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10469,7 +11342,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10508,6 +11384,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10515,6 +11392,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10524,6 +11402,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10531,6 +11410,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10540,6 +11420,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10547,11 +11428,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 6d8f6b1471e974f078a2c5f17dfca38a, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10565,7 +11448,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10604,6 +11490,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10611,6 +11498,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10620,6 +11508,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10627,6 +11516,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10636,6 +11526,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10643,11 +11534,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: ccd8f314c42c74f64aba863ac7ce5c13, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10661,7 +11554,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10700,6 +11596,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10707,6 +11604,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10716,6 +11614,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10723,6 +11622,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10732,6 +11632,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10739,11 +11640,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10757,7 +11660,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10796,6 +11702,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10803,6 +11710,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10812,6 +11720,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10819,6 +11728,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10828,6 +11738,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10835,11 +11746,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b46bce0a70ce045a1911b30b25f228c1, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10853,7 +11766,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10892,6 +11808,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10899,6 +11816,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 00000000
     - label: Property 4
@@ -10908,6 +11826,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10915,6 +11834,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -10924,6 +11844,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10931,11 +11852,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 76294c76103d144be8f4715034382d57, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -10949,7 +11872,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -10990,6 +11916,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -10997,6 +11924,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -11006,6 +11934,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11013,6 +11942,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -11022,6 +11952,7 @@ MonoBehaviour:
       floatVal: 69
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11029,11 +11960,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 50ecee34e335c4c4eacb1cb9d903cd34, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -11047,7 +11980,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -11078,7 +12014,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -11093,7 +12032,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Talk to
         lineID: -1
@@ -11108,7 +12050,10 @@ MonoBehaviour:
         size: 0.04
         animSpeed: 4
         endAnimOnLastFrame: 0
+        skipFirstFrameWhenLooping: 0
         clickOffset: {x: 0, y: 0}
+        frameSpeeds: []
+        alwaysAnimate: 0
         dontCycle: 0
         label: Use
         lineID: -1
@@ -11133,6 +12078,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11140,6 +12086,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -11149,6 +12096,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11156,6 +12104,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -11165,6 +12114,7 @@ MonoBehaviour:
       floatVal: 5
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11172,11 +12122,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -11190,7 +12142,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -11232,6 +12187,7 @@ MonoBehaviour:
       popUps:
       - Male
       - Female
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11239,6 +12195,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 1
       categoryIDs: 01000000
     - label: Property 4
@@ -11248,6 +12205,7 @@ MonoBehaviour:
       floatVal: 0
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11255,6 +12213,7 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: -1
       popUpsLineID: -1
+      description: 
       limitToCategories: 0
       categoryIDs: 
     - label: Weight
@@ -11264,6 +12223,7 @@ MonoBehaviour:
       floatVal: 21
       textVal: 
       popUps: []
+      vector3Val: {x: 0, y: 0, z: 0}
       link: 0
       pmVar: 
       updateLinkOnStart: 0
@@ -11271,11 +12231,13 @@ MonoBehaviour:
       canTranslate: 1
       textValLineID: 0
       popUpsLineID: 0
+      description: 
       limitToCategories: 0
       categoryIDs: 
     canCarryMultiple: 0
     count: 1
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 2800000, guid: 2013f525787f047ebb05cd6137631b50, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -11289,7 +12251,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -11439,6 +12404,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -11826,6 +12793,7 @@ MonoBehaviour:
   showActive: 0
   uiHideStyle: 0
   autoHandle: 1
+  linkUIGraphic: 0
   fixedOption: 0
   optionToShow: 0
   parameterID: -1
@@ -11950,6 +12918,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -12006,6 +12975,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -12062,6 +13032,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -12522,6 +13493,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -12623,6 +13596,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -13041,6 +14015,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -13143,6 +14119,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -13219,8 +14196,10 @@ MonoBehaviour:
   parameterID: -1
   newSaveText: New save
   showNewSaveOption: 1
+  hideIfNotValid: 0
   autoHandle: 1
   uiHideStyle: 0
+  linkUIGraphic: 0
 --- !u!114 &11458392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13336,6 +14315,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -13434,6 +14415,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -13513,8 +14495,10 @@ MonoBehaviour:
   parameterID: -1
   newSaveText: New save
   showNewSaveOption: 1
+  hideIfNotValid: 0
   autoHandle: 1
   uiHideStyle: 0
+  linkUIGraphic: 0
 --- !u!114 &11458400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13630,6 +14614,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -13728,6 +14714,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -13776,6 +14763,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0

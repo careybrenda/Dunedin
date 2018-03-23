@@ -1,7 +1,7 @@
 ﻿/*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2016
+ *	by Chris Burton, 2013-2018
  *	
  *	"Parallax2D.cs"
  * 
@@ -51,6 +51,9 @@ namespace AC
 		/** The maximum scrolling position in the Y-direction, if limitY = True */
 		public float maxY;
 
+		/** What entity affects the parallax behaviour (Camera, Cursor) */
+		public ParallaxReactsTo reactsTo = ParallaxReactsTo.Camera;
+
 		private float xStart;
 		private float yStart;
 		private float xDesired;
@@ -68,18 +71,47 @@ namespace AC
 		}
 
 
+		private void OnEnable ()
+		{
+			if (KickStarter.stateHandler) KickStarter.stateHandler.Register (this);
+		}
+
+
+		private void Start ()
+		{
+			if (KickStarter.stateHandler) KickStarter.stateHandler.Register (this);
+		}
+
+
+		private void OnDisable ()
+		{
+			if (KickStarter.stateHandler) KickStarter.stateHandler.Unregister (this);
+		}
+
+
 		/**
 		 * Updates the GameObject's position according to the camera.  This is called every frame by the StateHandler.
 		 */
 		public void UpdateOffset ()
 		{
-			if (KickStarter.mainCamera.attachedCamera is GameCamera2D && !KickStarter.mainCamera.attachedCamera._camera.orthographic)
+			switch (reactsTo)
 			{
-				perspectiveOffset = KickStarter.mainCamera.GetPerspectiveOffset ();
-			}
-			else
-			{
-				perspectiveOffset = new Vector2 (Camera.main.transform.position.x, Camera.main.transform.position.y);
+				case ParallaxReactsTo.Camera:
+					if (KickStarter.mainCamera.attachedCamera is GameCamera2D && !KickStarter.mainCamera.attachedCamera._camera.orthographic)
+					{
+						perspectiveOffset = KickStarter.mainCamera.GetPerspectiveOffset ();
+					}
+					else
+					{
+						perspectiveOffset = new Vector2 (Camera.main.transform.position.x, Camera.main.transform.position.y);
+					}
+					break;
+
+				case ParallaxReactsTo.Cursor:
+					Vector2 screenCentre = AdvGame.GetMainGameViewSize () / 2f;
+					Vector2 mousePosition = KickStarter.playerInput.GetMousePosition ();
+					perspectiveOffset = new Vector2 (((1f - mousePosition.x) / screenCentre.x) + 1f, ((1f - mousePosition.y) / screenCentre.y + 1f));
+					break;
 			}
 
 			if (limitX)

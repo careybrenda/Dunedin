@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"MenuSavesList.cs"
  * 
@@ -64,6 +64,8 @@ namespace AC
 		public string newSaveText = "New save";
 		/** If True, a slot that represents a "new save" space can be displayed if appropriate */
 		public bool showNewSaveOption = true;
+		/** If True, and saveListType = AC_SaveListType.Load and fixedOption = True, then the element will be hidden if the slot ID it represents is not filled with a valid save */
+		public bool hideIfNotValid = false;
 		/** If True, then the save file will be loaded/saved once its slot is clicked on */
 		public bool autoHandle = true;
 		/** The method which this element (or slots within it) are hidden from view when made invisible (DisableObject, ClearContent) */
@@ -101,6 +103,7 @@ namespace AC
 
 			fixedOption = false;
 			optionToShow = 1;
+			hideIfNotValid = false;
 
 			importProductName = "";
 			importSaveFilename = "";
@@ -149,6 +152,7 @@ namespace AC
 			blankSlotTexture = _element.blankSlotTexture;
 			fixedOption = _element.fixedOption;
 			optionToShow = _element.optionToShow;
+			hideIfNotValid = _element.hideIfNotValid;
 			importProductName = _element.importProductName;
 			importSaveFilename = _element.importSaveFilename;
 			checkImportBool = _element.checkImportBool;
@@ -189,11 +193,11 @@ namespace AC
 		 * <summary>Gets the first linked Unity UI GameObject associated with this element.</summary>
 		 * <param name = "The first Unity UI GameObject associated with the element</returns>
 		 */
-		public override GameObject GetObjectToSelect ()
+		public override GameObject GetObjectToSelect (int slotIndex = 0)
 		{
-			if (uiSlots != null && uiSlots.Length > 0 && uiSlots[0].uiButton != null && numSlots > 0)
+			if (uiSlots != null && uiSlots.Length > slotIndex && uiSlots[slotIndex].uiButton != null && numSlots > slotIndex)
 			{
-				return uiSlots[0].uiButton.gameObject;
+				return uiSlots[slotIndex].uiButton.gameObject;
 			}
 			return null;
 		}
@@ -224,7 +228,7 @@ namespace AC
 		
 		public override void ShowGUI (Menu menu)
 		{
-			string apiPrefix = "AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\")";
+			string apiPrefix = "(AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\") as AC.MenuSavesList)";
 
 			MenuSource source = menu.menuSource;
 			EditorGUILayout.BeginVertical ("Button");
@@ -240,11 +244,11 @@ namespace AC
 				autoHandle = CustomGUILayout.Toggle ("Save when click on?", autoHandle, apiPrefix + ".autoHandle");
 				if (autoHandle)
 				{
-					ActionListGUI ("ActionList after saving:", menu.title, "After_Saving");
+					ActionListGUI ("ActionList after saving:", menu.title, "After_Saving", apiPrefix);
 				}
 				else
 				{
-					ActionListGUI ("ActionList when click:", menu.title, "When_Click");
+					ActionListGUI ("ActionList when click:", menu.title, "When_Click", apiPrefix);
 				}
 			}
 			else if (saveListType == AC_SaveListType.Load)
@@ -252,11 +256,11 @@ namespace AC
 				autoHandle = CustomGUILayout.Toggle ("Load when click on?", autoHandle, apiPrefix + ".autoHandle");
 				if (autoHandle)
 				{
-					ActionListGUI ("ActionList after loading:", menu.title, "After_Loading");
+					ActionListGUI ("ActionList after loading:", menu.title, "After_Loading", apiPrefix);
 				}
 				else
 				{
-					ActionListGUI ("ActionList when click:", menu.title, "When_Click");
+					ActionListGUI ("ActionList when click:", menu.title, "When_Click", apiPrefix);
 				}
 			}
 			else if (saveListType == AC_SaveListType.Import)
@@ -265,7 +269,7 @@ namespace AC
 				#if UNITY_STANDALONE
 				importProductName = CustomGUILayout.TextField ("Import product name:", importProductName, apiPrefix + ".importProductName");
 				importSaveFilename = CustomGUILayout.TextField ("Import save filename:", importSaveFilename, apiPrefix + ".importSaveFilename");
-				ActionListGUI ("ActionList after import:", menu.title, "After_Import");
+				ActionListGUI ("ActionList after import:", menu.title, "After_Import", apiPrefix);
 				checkImportBool = CustomGUILayout.Toggle ("Require Bool to be true?", checkImportBool, apiPrefix + ".checkImportBool");
 				if (checkImportBool)
 				{
@@ -292,6 +296,11 @@ namespace AC
 				numSlots = 1;
 				slotSpacing = 0f;
 				optionToShow = CustomGUILayout.IntField ("ID to display:", optionToShow, apiPrefix + ".optionToShow");
+
+				if (saveListType == AC_SaveListType.Load)
+				{
+					hideIfNotValid = CustomGUILayout.Toggle ("Hide if no save file found?", hideIfNotValid, apiPrefix + ".hideIfNotValid");
+				}
 			}
 			else
 			{
@@ -399,9 +408,9 @@ namespace AC
 		}
 
 
-		private void ActionListGUI (string label, string menuTitle, string suffix)
+		private void ActionListGUI (string label, string menuTitle, string suffix, string apiPrefix)
 		{
-			actionListOnSave = ActionListAssetMenu.AssetGUI (label, actionListOnSave, "", menuTitle + "_" + title + "_" + suffix);
+			actionListOnSave = ActionListAssetMenu.AssetGUI (label, actionListOnSave, apiPrefix + ".actionListOnSave", menuTitle + "_" + title + "_" + suffix);
 			
 			if (actionListOnSave != null && actionListOnSave.useParameters && actionListOnSave.parameters.Count > 0)
 			{
@@ -446,9 +455,19 @@ namespace AC
 		{
 			if (newSaveSlot && saveListType == AC_SaveListType.Save)
 			{
-				if (!fixedOption && (slot + offset) == (numSlots-1))
+				if (fixedOption)
 				{
-					return TranslateLabel (newSaveText, languageNumber);
+					if (SaveSystem.DoesSaveExist (optionToShow))
+					{
+						return TranslateLabel (newSaveText, languageNumber);
+					}
+				}
+				else
+				{
+					if ((slot + offset) == (numSlots - 1))
+					{
+						return TranslateLabel (newSaveText, languageNumber);
+					}
 				}
 			}
 			return SaveSystem.GetSaveSlotLabel (slot + offset, optionToShow, fixedOption);
@@ -495,6 +514,7 @@ namespace AC
 					else if (fixedOption)
 					{
 						fullText = TranslateLabel (newSaveText, languageNumber);
+
 					}
 					else
 					{
@@ -528,6 +548,18 @@ namespace AC
 			{
 				if (uiSlots != null && uiSlots.Length > _slot)
 				{
+					if (saveListType == AC_SaveListType.Load && fixedOption && hideIfNotValid)
+					{
+						if (!SaveSystem.DoesSaveExist (optionToShow))
+						{
+							LimitUISlotVisibility (uiSlots, 0, uiHideStyle);
+						}
+						else
+						{
+							LimitUISlotVisibility (uiSlots, numSlots, uiHideStyle);
+						}
+					}
+
 					LimitUISlotVisibility (uiSlots, numSlots, uiHideStyle);
 					
 					if (displayType != SaveDisplayType.LabelOnly)
@@ -796,6 +828,11 @@ namespace AC
 				if (fixedOption)
 				{
 					numSlots = 1;
+
+					if (saveListType == AC_SaveListType.Save)
+					{
+						newSaveSlot = !SaveSystem.DoesSaveExist (optionToShow);
+					}
 				}
 				else
 				{

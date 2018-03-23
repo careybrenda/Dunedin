@@ -22,6 +22,7 @@ MonoBehaviour:
   actionListType: 0
   unfreezePauseMenus: 1
   useParameters: 0
+  canRunMultipleInstances: 0
   parameters: []
   tagID: 0
 --- !u!114 &11437292
@@ -45,7 +46,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 1
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 2
@@ -101,7 +101,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 1
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 1
@@ -158,7 +157,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 2
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 2
@@ -195,11 +193,13 @@ MonoBehaviour:
   saveCheck: 1
   includeAutoSaves: 1
   checkByElementIndex: 0
+  checkByName: 0
   intValue: 1
   checkParameterID: -1
   intCondition: 3
   menuName: 
   elementName: 
+  profileVarID: 0
 --- !u!114 &11471494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,7 +221,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 1
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 1
@@ -277,7 +276,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 1
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 1
@@ -334,7 +332,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 2
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 2
@@ -371,8 +368,10 @@ MonoBehaviour:
   saveCheck: 1
   includeAutoSaves: 1
   checkByElementIndex: 0
+  checkByName: 0
   intValue: 10
   checkParameterID: -1
   intCondition: 2
   menuName: 
   elementName: 
+  profileVarID: 0

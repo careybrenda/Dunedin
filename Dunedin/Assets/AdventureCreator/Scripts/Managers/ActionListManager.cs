@@ -1,7 +1,7 @@
 ﻿/*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"ActionListManager.cs"
  * 
@@ -346,7 +346,7 @@ namespace AC
 				}
 			}
 			
-			if (KickStarter.stateHandler.gameState == GameState.DialogOptions && KickStarter.playerInput.activeConversation != null)
+			if (KickStarter.stateHandler.gameState == GameState.DialogOptions && KickStarter.playerInput.IsInConversation ())
 			{
 				if (GUILayout.Button ("Conversation: " + KickStarter.playerInput.activeConversation.gameObject.name))
 				{
@@ -427,10 +427,18 @@ namespace AC
 			addToSkipQueue = CanAddToSkipQueue (actionList, addToSkipQueue);
 			activeLists.Add (new ActiveList (actionList, addToSkipQueue, _startIndex));
 
-			if (actionList is RuntimeActionList && actionList.actionListType == ActionListType.PauseGameplay && !actionList.unfreezePauseMenus && KickStarter.playerMenus.ArePauseMenusOn (null))
+			if (KickStarter.playerMenus.ArePauseMenusOn ())
 			{
-				// Don't affect the gamestate if we want to remain frozen
-				return;
+				if (actionList.actionListType == ActionListType.RunInBackground)
+				{
+					// Don't change gamestate if running in background
+					return;
+				}
+				if (actionList is RuntimeActionList && actionList.actionListType == ActionListType.PauseGameplay && !actionList.unfreezePauseMenus)
+				{
+					// Don't affect the gamestate if we want to remain frozen
+					return;
+				}
 			}
 
 			SetCorrectGameState ();
@@ -662,7 +670,7 @@ namespace AC
 				}
 				else
 				{
-					if (KickStarter.playerInput.activeConversation != null)
+					if (KickStarter.playerInput.IsInConversation (true))
 					{
 						KickStarter.stateHandler.gameState = GameState.DialogOptions;
 					}

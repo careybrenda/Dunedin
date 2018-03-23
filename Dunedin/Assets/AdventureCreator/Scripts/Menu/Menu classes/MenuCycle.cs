@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"MenuCycle.cs"
  * 
@@ -213,7 +213,8 @@ namespace AC
 		
 		public override void ShowGUI (Menu menu)
 		{
-			string apiPrefix = "AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\")";
+			string apiPrefix = "(AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\") as AC.MenuCycle)";
+
 			MenuSource source = menu.menuSource;
 			EditorGUILayout.BeginVertical ("Button");
 

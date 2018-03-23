@@ -60,60 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93473753d384f4691ae088b55271fc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localItems: []
   craftingItems: []
   unhandledCombine: {fileID: 0}
   unhandledHotspot: {fileID: 0}
   unhandledGive: {fileID: 0}
-  selectedItem:
-    label: 
-    id: 0
-    altLabel: 
-    carryOnStart: 0
-    carryOnStartNotDefault: 0
-    carryOnStartID: 0
-    vars: []
-    canCarryMultiple: 0
-    count: 0
-    useSeparateSlots: 0
-    tex: {fileID: 0}
-    activeTex: {fileID: 0}
-    selectedTex: {fileID: 0}
-    linkedPrefab: {fileID: 0}
-    cursorIcon:
-      texture: {fileID: 0}
-      isAnimated: 0
-      numFrames: 1
-      numRows: 1
-      numCols: 1
-      size: 0.04
-      animSpeed: 4
-      endAnimOnLastFrame: 0
-      clickOffset: {x: 0, y: 0}
-      dontCycle: 0
-      label: Icon 1
-      lineID: -1
-      id: 0
-    lineID: 0
-    useIconID: 0
-    binID: 0
-    isEditing: 0
-    recipeSlot: 0
-    lastInteractionIndex: 0
-    overrideUseSyntax: 0
-    hotspotPrefix1:
-      label: 
-      lineID: 0
-    hotspotPrefix2:
-      label: 
-      lineID: 0
-    useActionList: {fileID: 0}
-    lookActionList: {fileID: 0}
-    interactions: []
-    combineActionList: []
-    combineID: 
-    unhandledActionList: {fileID: 0}
-    unhandledCombineActionList: {fileID: 0}
   hoverItem:
     label: 
     id: 0
@@ -125,6 +75,7 @@ MonoBehaviour:
     canCarryMultiple: 0
     count: 0
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -138,7 +89,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -174,6 +128,7 @@ MonoBehaviour:
     canCarryMultiple: 0
     count: 0
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -187,7 +142,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1
@@ -225,6 +183,7 @@ MonoBehaviour:
     canCarryMultiple: 0
     count: 0
     useSeparateSlots: 0
+    selectSingle: 0
     tex: {fileID: 0}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
@@ -238,7 +197,10 @@ MonoBehaviour:
       size: 0.04
       animSpeed: 4
       endAnimOnLastFrame: 0
+      skipFirstFrameWhenLooping: 0
       clickOffset: {x: 0, y: 0}
+      frameSpeeds: []
+      alwaysAnimate: 0
       dontCycle: 0
       label: Icon 1
       lineID: -1

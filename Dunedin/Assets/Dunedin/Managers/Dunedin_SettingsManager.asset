@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveFileName: Dunedin
   saveTimeDisplay: 0
+  customSaveFormat: MMMM dd, yyyy
   takeSaveScreenshots: 0
   useProfiles: 0
   maxSaves: 5
@@ -30,12 +31,15 @@ MonoBehaviour:
   inputMethod: 0
   interactionMethod: 0
   selectInteractions: 0
+  autoHideInteractionIcons: 1
   cancelInteractions: 0
   seeInteractions: 0
   closeInteractionMenuIfTapHotspot: 1
   stopPlayerOnClickHotspot: 0
   cycleInventoryCursors: 1
   autoCycleWhenInteract: 0
+  showHoverInteractionInHotspotLabel: 0
+  allowDefaultinteractions: 0
   whenReselectHotspot: 0
   lockCursorOnStart: 0
   hideLockedCursor: 0
@@ -50,6 +54,7 @@ MonoBehaviour:
   inventoryInteractions: 1
   inventoryDisableLeft: 1
   inventoryDisableUnhandled: 1
+  inventoryDisableDefined: 1
   activeWhenHover: 0
   inventoryActiveEffect: 1
   inventoryPulseSpeed: 1
@@ -78,6 +83,7 @@ MonoBehaviour:
   experimentalAccuracy: 0
   pathfindUpdateFrequency: 0
   verticalReductionFactor: 0.7
+  rotationsAffectedByVerticalReduction: 1
   jumpSpeed: 4
   singleTapStraight: 0
   singleTapStraightPathfind: 0
@@ -117,6 +123,7 @@ MonoBehaviour:
   occludeIcons: 0
   hideIconUnderInteractionMenu: 0
   hotspotDrawing: 0
+  hideUnhandledHotspots: 0
   navMeshRaycastLength: 100
   hotspotRaycastLength: 100
   moveableRaycastLength: 30
@@ -133,6 +140,7 @@ MonoBehaviour:
   loadingDelay: 0
   playMusicWhilePaused: 0
   musicStorages: []
+  ambienceStorages: []
   volumeControl: 0
   musicMixerGroup: {fileID: 0}
   sfxMixerGroup: {fileID: 0}

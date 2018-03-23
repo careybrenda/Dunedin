@@ -58,9 +58,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToAlignTo: {fileID: 0}
+  lockDistance: 1
   distanceToCamera: 0
   lockScale: 0
-  scaleFactor: 0
+  scaleFactor: {x: 0, y: 0}
+  alignType: 0
 --- !u!212 &21223692
 SpriteRenderer:
   m_ObjectHideFlags: 1

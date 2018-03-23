@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"MenuDrag.cs"
  * 
@@ -92,7 +92,7 @@ namespace AC
 		
 		public override void ShowGUI (Menu menu)
 		{
-			string apiPrefix = "AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\")";
+			string apiPrefix = "(AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\") as AC.MenuDrag)";
 
 			MenuSource source = menu.menuSource;
 			if (source != MenuSource.AdventureCreator)
@@ -113,6 +113,9 @@ namespace AC
 			}
 
 			dragRect = EditorGUILayout.RectField ("Drag boundary:", dragRect);
+
+			ChangeCursorGUI (menu);
+
 			EditorGUILayout.EndVertical ();
 			
 			base.ShowGUI (menu);

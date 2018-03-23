@@ -641,6 +641,8 @@ namespace AC
 
 		private void UpdateCameraTransition ()
 		{
+			float timeValue = AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve);
+
 			if (retainPreviousSpeed && previousAttachedCamera != null)
 			{
 				startPerspectiveOffset = previousAttachedCamera.GetPerspectiveOffset ();
@@ -653,8 +655,8 @@ namespace AC
 
 			if (attachedCamera.Is2D ())
 			{
-				perspectiveOffset.x = AdvGame.Lerp (startPerspectiveOffset.x, attachedCamera.GetPerspectiveOffset ().x, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
-				perspectiveOffset.y = AdvGame.Lerp (startPerspectiveOffset.y, attachedCamera.GetPerspectiveOffset ().y, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
+				perspectiveOffset.x = AdvGame.Lerp (startPerspectiveOffset.x, attachedCamera.GetPerspectiveOffset ().x, timeValue);
+				perspectiveOffset.y = AdvGame.Lerp (startPerspectiveOffset.y, attachedCamera.GetPerspectiveOffset ().y, timeValue);
 
 				_camera.ResetProjectionMatrix();
 			}
@@ -662,21 +664,21 @@ namespace AC
 			if (moveMethod == MoveMethod.Curved)
 			{
 				// Don't slerp y position as this will create a "bump" effect
-				Vector3 newPosition = Vector3.Slerp (startPosition, attachedCamera.transform.position, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
-				newPosition.y = Mathf.Lerp(startPosition.y, attachedCamera.transform.position.y, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
+				Vector3 newPosition = Vector3.Slerp (startPosition, attachedCamera.transform.position, timeValue);
+				newPosition.y = Mathf.Lerp(startPosition.y, attachedCamera.transform.position.y, timeValue);
 				transform.position = newPosition;
 
 				transform.rotation = Quaternion.Slerp (startRotation, attachedCamera.transform.rotation, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
 			}
 			else
 			{
-				transform.position = AdvGame.Lerp (startPosition, attachedCamera.transform.position, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
-				transform.rotation = AdvGame.Lerp (startRotation, attachedCamera.transform.rotation, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
+				transform.position = AdvGame.Lerp (startPosition, attachedCamera.transform.position, timeValue);
+				transform.rotation = AdvGame.Lerp (startRotation, attachedCamera.transform.rotation, timeValue);
 			}
 
-			focalDistance = AdvGame.Lerp (startFocalDistance, attachedCamera.focalDistance, AdvGame.Interpolate(startTime, changeTime, moveMethod, timeCurve));
-			_camera.fieldOfView = AdvGame.Lerp (startFOV, attachedCamera._camera.fieldOfView, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
-			_camera.orthographicSize = AdvGame.Lerp (startOrtho, attachedCamera._camera.orthographicSize, AdvGame.Interpolate (startTime, changeTime, moveMethod, timeCurve));
+			focalDistance = AdvGame.Lerp (startFocalDistance, attachedCamera.focalDistance, timeValue);
+			_camera.fieldOfView = AdvGame.Lerp (startFOV, attachedCamera._camera.fieldOfView, timeValue);
+			_camera.orthographicSize = AdvGame.Lerp (startOrtho, attachedCamera._camera.orthographicSize, timeValue);
 
 			if (attachedCamera.Is2D () && !_camera.orthographic)
 			{
@@ -761,7 +763,9 @@ namespace AC
 				LookAtCentre ();
 				isSmoothChanging = false;
 				transitionFromCamera = null;
-				
+
+				bool changedOrientation = (transform.rotation != attachedCamera.transform.rotation);
+
 				_camera.orthographic = attachedCamera._camera.orthographic;
 				_camera.fieldOfView = attachedCamera._camera.fieldOfView;
 				_camera.orthographicSize = attachedCamera._camera.orthographicSize;
@@ -771,7 +775,7 @@ namespace AC
 				
 				perspectiveOffset = attachedCamera.GetPerspectiveOffset ();
 
-				if (KickStarter.stateHandler.gameState == GameState.Normal && KickStarter.settingsManager.movementMethod == MovementMethod.Direct && KickStarter.settingsManager.directMovementType == DirectMovementType.RelativeToCamera && /*KickStarter.settingsManager.inputMethod != InputMethod.TouchScreen &&*/ KickStarter.playerInput != null)
+				if (changedOrientation && !SceneSettings.IsUnity2D () && KickStarter.stateHandler.gameState == GameState.Normal && KickStarter.settingsManager.movementMethod == MovementMethod.Direct && KickStarter.settingsManager.directMovementType == DirectMovementType.RelativeToCamera && /*KickStarter.settingsManager.inputMethod != InputMethod.TouchScreen &&*/ KickStarter.playerInput != null)
 				{
 					if (KickStarter.player != null && 
 						(KickStarter.player.GetPath () == null || !KickStarter.player.IsLockedToPath ()))
@@ -1283,10 +1287,12 @@ namespace AC
 				}
 			}
 			
-			BackgroundCamera backgroundCamera = FindObjectOfType (typeof (BackgroundCamera)) as BackgroundCamera;
-			if (backgroundCamera)
+			if (KickStarter.stateHandler)
 			{
-				backgroundCamera.UpdateRect ();
+				foreach (BackgroundCamera backgroundCamera in KickStarter.stateHandler.BackgroundCameras)
+				{
+					backgroundCamera.UpdateRect ();
+				}
 			}
 
 			CalculateUnityUIAspectRatioCorrection ();
@@ -1350,12 +1356,24 @@ namespace AC
 
 			if (borderWidth != 0f)
 			{
+				if (fadeTexture == null)
+				{
+					ACDebug.LogWarning ("Cannot draw camera borders because no Fade texture is assigned in the MainCamera!");
+					return;
+				}
+
 				GUI.depth = 10;
 				GUI.DrawTexture (borderRect1, fadeTexture);
 				GUI.DrawTexture (borderRect2, fadeTexture);
 			}
 			else if (isSplitScreen)
 			{
+				if (fadeTexture == null)
+				{
+					ACDebug.LogWarning ("Cannot draw camera borders because no Fade texture is assigned in the MainCamera!");
+					return;
+				}
+
 				GUI.depth = 10;
 				GUI.DrawTexture (midBorderRect, fadeTexture);
 			}
@@ -1806,6 +1824,14 @@ namespace AC
 
 		public PlayerData SaveData (PlayerData playerData)
 		{
+			bool restoreLookAtPosition = false;
+			Vector3 localLookAtPosition = Vector3.zero;
+			if (lookAtTransform != null && KickStarter.stateHandler.IsInGameplay ())
+			{
+				restoreLookAtPosition = true;
+				localLookAtPosition = lookAtTransform.localPosition;
+			}
+
 			SnapToAttached ();
 			if (attachedCamera)
 			{
@@ -1865,6 +1891,11 @@ namespace AC
 				{
 					playerData.splitCameraID = 0;
 				}
+			}
+
+			if (restoreLookAtPosition && lookAtTransform != null)
+			{
+				lookAtTransform.localPosition = localLookAtPosition;
 			}
 
 			return playerData;

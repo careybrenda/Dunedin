@@ -36,6 +36,8 @@ namespace AC
 		public TurningStyle turningStyle = TurningStyle.Script;
 		/** If True, then the engine is sprite-based, and character's will rely on their spriteChild for animation */
 		public bool isSpriteBased = false;
+		/** If True, then the TurnHead method will be called every frame regardless of whether or not the head is looking at something */
+		public bool updateHeadAlways = false;
 
 		protected AC.Char character;
 
@@ -52,10 +54,10 @@ namespace AC
 		}
 
 		public virtual void CharSettingsGUI ()
-		{ 
-			#if UNITY_EDITOR
-			#endif
-		}
+		{}
+
+		public virtual void CharExpressionsGUI ()
+		{}
 
 		public virtual void ActionCharAnimGUI (ActionCharAnim action, List<ActionParameter> parameters = null)
 		{
@@ -185,8 +187,11 @@ namespace AC
 		 * <param name = "angles">The new angles to rotate the head to</param>
 		 */
 		public virtual void TurnHead (Vector2 angles)
-		{ }
+		{}
 
+		/** <summary>Called whenever the character's Expression is changed. It can be read with CurrentExpression.</summary> */
+		public virtual void OnSetExpression ()
+		{}
 
 		#if UNITY_EDITOR
 

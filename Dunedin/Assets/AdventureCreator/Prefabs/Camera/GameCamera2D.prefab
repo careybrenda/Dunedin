@@ -61,6 +61,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -81,6 +82,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isDragControlled: 0
   focalDistance: 10
+  is2D: 0
   lockHorizontal: 1
   lockVertical: 1
   limitHorizontal: 0
@@ -91,6 +93,8 @@ MonoBehaviour:
   dampSpeed: 0.9
   directionInfluence: {x: 0, y: 0}
   afterOffset: {x: 0, y: 0}
+  doSnapping: 0
+  unitSnap: 0.1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"PlayerInput.cs"
  * 
@@ -56,7 +56,6 @@ namespace AC
 		/** The name of the Input Axis that controls dragging effects. If empty, the default inputs (LMB / "InteractionA") will be used */
 		public string dragOverrideInput = "";
 
-		private int selected_option;
 		private float clickTime = 0f;
 		private float doubleClickTime = 0;
 		private MenuDrag activeDragElement;
@@ -105,6 +104,7 @@ namespace AC
 
 		/** The active Conversation */
 		[HideInInspector] public Conversation activeConversation = null;
+		private Conversation pendingOptionConversation = null;
 		/** The active ArrowPrompt */
 		[HideInInspector] public ArrowPrompt activeArrows = null;
 		/** The active Container */
@@ -262,13 +262,12 @@ namespace AC
 					if (cursorIsLocked)
 					{
 						mousePosition = InputMousePosition (true);
- 						freeAim = GetSmoothFreeAim (InputGetFreeAim (true));
 					}
 					else
 					{
 						mousePosition = InputMousePosition (false);
-						freeAim = InputGetFreeAim (false);
 					}
+					freeAim = GetSmoothFreeAim (InputGetFreeAim (cursorIsLocked));
 
 					// Cursor state
 					if (mouseState == MouseState.Normal)
@@ -344,20 +343,27 @@ namespace AC
 					
 					if (KickStarter.settingsManager.inputMethod == InputMethod.TouchScreen)
 					{
-						if (dragState == DragState.Player)
+						if (InputGetFreeAimDelegate != null)
 						{
-							if (KickStarter.settingsManager.IsFirstPersonDragMovement ())
-							{
-								freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, 0f));
-							}
-							else
-							{
-								freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, -dragVector.y * KickStarter.settingsManager.freeAimTouchSpeed));
-							}
+							freeAim = GetSmoothFreeAim (InputGetFreeAim (dragState == DragState.Player));
 						}
 						else
 						{
-							freeAim = GetSmoothFreeAim (Vector2.zero);
+							if (dragState == DragState.Player)
+							{
+								if (KickStarter.settingsManager.IsFirstPersonDragMovement ())
+								{
+									freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, 0f));
+								}
+								else
+								{
+									freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, -dragVector.y * KickStarter.settingsManager.freeAimTouchSpeed));
+								}
+							}
+							else
+							{
+								freeAim = GetSmoothFreeAim (Vector2.zero);
+							}
 						}
 					}
 				}
@@ -523,21 +529,28 @@ namespace AC
 							}
 						}
 					}
-					
-					if (dragState == DragState.Player)
+
+					if (InputGetFreeAimDelegate != null)
 					{
-						if (KickStarter.settingsManager.IsFirstPersonDragMovement ())
-						{
-							freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, 0f));
-						}
-						else
-						{
-							freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, -dragVector.y * KickStarter.settingsManager.freeAimTouchSpeed));
-						}
+						freeAim = GetSmoothFreeAim (InputGetFreeAim (dragState == DragState.Player));
 					}
 					else
 					{
-						freeAim = GetSmoothFreeAim (Vector2.zero);
+						if (dragState == DragState.Player)
+						{
+							if (KickStarter.settingsManager.IsFirstPersonDragMovement ())
+							{
+								freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, 0f));
+							}
+							else
+							{
+								freeAim = GetSmoothFreeAim (new Vector2 (dragVector.x * KickStarter.settingsManager.freeAimTouchSpeed, -dragVector.y * KickStarter.settingsManager.freeAimTouchSpeed));
+							}
+						}
+						else
+						{
+							freeAim = GetSmoothFreeAim (Vector2.zero);
+						}
 					}
 				}
 				else if (KickStarter.settingsManager.inputMethod == InputMethod.KeyboardOrController)
@@ -579,19 +592,20 @@ namespace AC
 					if (cursorIsLocked)
 					{
 						mousePosition = new Vector2 (Screen.width / 2f, Screen.height / 2f);
-						freeAim = GetSmoothFreeAim (new Vector2 (InputGetAxis ("CursorHorizontal") * 50f, InputGetAxis ("CursorVertical") * 50f));
 					}
 					else
 					{
 						xboxCursor.x += InputGetAxis ("CursorHorizontal") * cursorMoveSpeed / Screen.width * 5000f;
 						xboxCursor.y += InputGetAxis ("CursorVertical") * cursorMoveSpeed / Screen.height * 5000f;
-
+						
 						xboxCursor.x = Mathf.Clamp (xboxCursor.x, 0f, Screen.width);
 						xboxCursor.y = Mathf.Clamp (xboxCursor.y, 0f, Screen.height);
 						
 						mousePosition = xboxCursor;
 						freeAim = Vector2.zero;
 					}
+
+					freeAim = GetSmoothFreeAim (InputGetFreeAim (cursorIsLocked, 50f));
 					
 					// Cursor state
 					if (mouseState == MouseState.Normal)
@@ -645,35 +659,6 @@ namespace AC
 					}
 
 					SetDoubleClickState ();
-
-					// Menu option changing
-					if (!KickStarter.playerMenus.IsCyclingInteractionMenu ())
-					{
-						if (KickStarter.stateHandler.gameState == GameState.DialogOptions ||
-							KickStarter.stateHandler.gameState == GameState.Paused ||
-						   (KickStarter.stateHandler.gameState == GameState.Normal && canKeyboardControlMenusDuringGameplay))
-						{
-							if (!scrollingLocked)
-							{
-								if (InputGetAxisRaw ("Vertical") > 0.1 || InputGetAxisRaw ("Horizontal") < -0.1)
-								{
-									// Up / Left
-									scrollingLocked = true;
-									selected_option --;
-								}
-								else if (InputGetAxisRaw ("Vertical") < -0.1 || InputGetAxisRaw ("Horizontal") > 0.1)
-								{
-									// Down / Right
-									scrollingLocked = true;
-									selected_option ++;
-								}
-							}
-							else if (InputGetAxisRaw ("Vertical") < 0.05 && InputGetAxisRaw ("Vertical") > -0.05 && InputGetAxisRaw ("Horizontal") < 0.05 && InputGetAxisRaw ("Horizontal") > -0.05)
-							{
-								scrollingLocked = false;
-							}
-						}
-					}
 				}
 
 				if (KickStarter.playerInteraction.GetHotspotMovingTo () != null)
@@ -811,18 +796,9 @@ namespace AC
 		{
 			if (KickStarter.settingsManager.activeInputs != null)
 			{
-				foreach (ActiveInput activeInput in KickStarter.settingsManager.activeInputs)
+				for (int i=0; i<KickStarter.settingsManager.activeInputs.Count; i++)
 				{
-					if (activeInput.IsEnabled && !string.IsNullOrEmpty (activeInput.inputName))
-					{
-						if (InputGetButtonDown (activeInput.inputName))
-						{
-							if (KickStarter.stateHandler.gameState == activeInput.gameState && activeInput.actionListAsset != null && !KickStarter.actionListAssetManager.IsListRunning (activeInput.actionListAsset))
-							{
-								AdvGame.RunActionListAsset (activeInput.actionListAsset);
-							}
-						}
-					}
+					KickStarter.settingsManager.activeInputs[i].TestForInput ();
 				}
 			}
 		}
@@ -1173,14 +1149,6 @@ namespace AC
 						v = InputGetAxis ("Vertical");
 					}
 
-					if (InputGetButtonDown ("Jump") && KickStarter.stateHandler.gameState == GameState.Normal)
-					{
-						if (!isJumpLocked)
-						{
-							KickStarter.player.Jump ();
-						}
-					}
-					
 					if ((isUpLocked && v > 0f) || (isDownLocked && v < 0f))
 					{
 						v = 0f;
@@ -1313,7 +1281,7 @@ namespace AC
 			Hotspot[] hotspots = FindObjectsOfType (typeof (Hotspot)) as Hotspot[];
 			foreach (Hotspot hotspot in hotspots)
 			{
-				if (hotspot.IsOn () && hotspot.highlight && hotspot != KickStarter.playerInteraction.GetActiveHotspot ())
+				if (hotspot.IsOn () && hotspot.PlayerIsWithinBoundary () && hotspot.highlight && hotspot != KickStarter.playerInteraction.GetActiveHotspot ())
 				{
 					hotspot.highlight.Flash ();
 				}
@@ -1588,7 +1556,7 @@ namespace AC
 		}
 
 
-		private Vector2 InputGetFreeAim (bool _cursorIsLocked)
+		private Vector2 InputGetFreeAim (bool _cursorIsLocked, float scaleFactor = 1f)
 		{
 			if (InputGetFreeAimDelegate != null)
 			{
@@ -1597,7 +1565,7 @@ namespace AC
 
 			if (_cursorIsLocked)
 			{
-				return new Vector2 (InputGetAxis ("CursorHorizontal"), InputGetAxis ("CursorVertical"));
+				return new Vector2 (InputGetAxis ("CursorHorizontal") * scaleFactor, InputGetAxis ("CursorVertical") * scaleFactor);
 			}
 			return Vector2.zero;
 		}
@@ -1708,7 +1676,7 @@ namespace AC
 				{
 					if (showError)
 					{
-						ACDebug.LogError ("Cannot find Input button '" + axis + "' - please define it in Unity's Input Manager (Edit -> Project settings -> Input).");
+						ACDebug.LogWarning ("Cannot find Input button '" + axis + "' - please define it in Unity's Input Manager (Edit -> Project settings -> Input).");
 					}
 				}
 			}
@@ -2078,6 +2046,16 @@ namespace AC
 		}
 
 
+		/** True if the Player's ability to jump has been disabled */
+		public bool IsJumpLocked
+		{
+			get
+			{
+				return isJumpLocked;
+			}
+		}
+
+
 		/**
 		 * <summary>Checks if the Player can be directly-controlled during gameplay.</summary>
 		 * <returns>True if the Player can be directly-controlled during gameplay.</returns>
@@ -2148,6 +2126,16 @@ namespace AC
 				return true;
 			}
 			return false;
+		}
+
+
+		/**
+		 * <summary>Checks if any DragBase object is being held by the player.</summary>
+		 * <returns>True if any DragBase object is being held by the Player</returns>
+		 */
+		public bool IsDragObjectHeld ()
+		{
+			return (dragObject != null);
 		}
 
 
@@ -2332,6 +2320,11 @@ namespace AC
 		private LerpUtils.Vector2Lerp freeAimLerp = new LerpUtils.Vector2Lerp ();
 		private Vector2 GetSmoothFreeAim (Vector2 targetFreeAim)
 		{
+			if (KickStarter.settingsManager.freeAimSmoothSpeed <= 0f)
+			{
+				return targetFreeAim;
+			}
+
 			float factor = 1f;
 			if (dragObject != null)
 			{
@@ -2371,6 +2364,8 @@ namespace AC
 		 */
 		public void ReturnToGameplayAfterLoad ()
 		{
+			pendingOptionConversation = null;
+
 			if (activeConversation)
 			{
 				KickStarter.stateHandler.gameState = GameState.DialogOptions;
@@ -2400,7 +2395,6 @@ namespace AC
 				mainData.activeConversation = Serializer.GetConstantID (activeConversation.gameObject);
 			}
 			mainData.canKeyboardControlMenusDuringGameplay = canKeyboardControlMenusDuringGameplay;
-			//mainData.toggleCursorState = (toggleCursorOn) ? 1 : 2;
 
 			return mainData;
 		}
@@ -2422,6 +2416,7 @@ namespace AC
 			
 			// Active conversation
 			activeConversation = Serializer.returnComponent <Conversation> (mainData.activeConversation);
+			pendingOptionConversation = null;
 			timeScale = mainData.timeScale;
 
 			canKeyboardControlMenusDuringGameplay = mainData.canKeyboardControlMenusDuringGameplay;
@@ -2472,15 +2467,36 @@ namespace AC
 		 */
 		public void InputControlMenu (Menu menu)
 		{
-			if (KickStarter.settingsManager.inputMethod != InputMethod.KeyboardOrController)
+			if (KickStarter.settingsManager.inputMethod != InputMethod.KeyboardOrController || menu.menuSource != MenuSource.AdventureCreator)
 			{
 				return;
 			}
 
 			if (menu.IsOn () && menu.CanCurrentlyKeyboardControl ())
 			{
-				selected_option = menu.ControlSelected (selected_option);
+				menu.AutoSelect ();
+
+				// Menu option changing
+				if (!KickStarter.playerMenus.IsCyclingInteractionMenu ())
+				{
+					if (KickStarter.stateHandler.gameState == GameState.DialogOptions ||
+						KickStarter.stateHandler.gameState == GameState.Paused ||
+					   (KickStarter.stateHandler.gameState == GameState.Normal && canKeyboardControlMenusDuringGameplay))
+					{
+						Vector2 rawInput = new Vector2 (InputGetAxisRaw ("Horizontal"), InputGetAxisRaw ("Vertical"));
+						scrollingLocked = menu.GetNextSlot (rawInput, scrollingLocked);
+
+						if (InputGetAxisRaw ("Vertical") < 0.05f && InputGetAxisRaw ("Vertical") > -0.05f && InputGetAxisRaw ("Horizontal") < 0.05f && InputGetAxisRaw ("Horizontal") > -0.05f)
+						{
+							scrollingLocked = false;
+						}
+					}
+				}
 			}
+			/*else
+			{
+				menu.selected_element = null;
+			}*/
 		}
 
 
@@ -2492,6 +2508,39 @@ namespace AC
 			if (activeConversation != null)
 			{
 				activeConversation = null;
+			}
+		}
+
+
+		/**
+		 * <summary>Checks if a Conversation is currently active</summary>
+		 * <param name = "alsoPendingOption">If True, then the method will return True if a Conversation is not active, but is in the delay gap between choosing an option and running it</param>
+		 * <returns>True if a Conversation is currently active</returns>
+		 */
+		public bool IsInConversation (bool alsoPendingOption = false)
+		{
+			if (activeConversation != null)
+			{
+				return true;
+			}
+			if (pendingOptionConversation != null && alsoPendingOption)
+			{
+				return true;
+			}
+			return false;
+		}
+
+
+		/** A Conversation that has ended, but has yet to run the response */
+		public Conversation PendingOptionConversation
+		{
+			get
+			{
+				return pendingOptionConversation;
+			}
+			set
+			{
+				pendingOptionConversation = value;
 			}
 		}
 

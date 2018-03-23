@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"SettingsManager.cs"
  * 
@@ -133,6 +133,8 @@ namespace AC
 		public bool autoCycleWhenInteract = false;
 		/** If True, and interactionMethod = AC_InteractionMethod.ChooseInteractionThenHotspot, then the Hotspot label will show the name of the interaction icon being hovered over */
 		public bool showHoverInteractionInHotspotLabel = false;
+		/** If True, and interactionMethod = AC_InteractionMethod.ChooseInteractionThenHotspot, then invoking the 'DefaultInteractions' input button will run the first-enabled 'Use' interaction of the active Hotspot */
+		public bool allowDefaultinteractions = false;
 		/** What happens to the cursor icon when a hotspot (or inventory item, depending) is reselected and selectInteractions = SelectInteractions.CyclingMenuAndClickingHotspot */
 		public WhenReselectHotspot whenReselectHotspot = WhenReselectHotspot.RestoreHotspotIcon;
 		/** If True, then the cursor will be locked in the centre of the screen when the game begins */
@@ -716,6 +718,7 @@ namespace AC
 				{
 					autoCycleWhenInteract = CustomGUILayout.ToggleLeft ("Reset cursor after an Interaction?", autoCycleWhenInteract, "AC.KickStarter.settingsManager.autoCycleWhenInteract");
 					showHoverInteractionInHotspotLabel = CustomGUILayout.ToggleLeft ("Show hover Interaction icons in Hotspot label?", showHoverInteractionInHotspotLabel, "AC.KickStarter.settingsManager.showHoverInteractionInHotspotLabel");
+					allowDefaultinteractions = CustomGUILayout.ToggleLeft ("Set first 'Use' interaction as default?", allowDefaultinteractions, "AC.KickStarter.settingsManager.allowDefaultinteractions");
 				}
 
 				if (movementMethod == MovementMethod.FirstPerson && inputMethod == InputMethod.TouchScreen)
@@ -802,7 +805,7 @@ namespace AC
 					}
 				}
 
-				if (interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction /*&& selectInteractions != SelectInteractions.ClickingMenu*/ && inventoryInteractions == InventoryInteractions.Multiple)
+				if (KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingCursorAndClickingHotspot && KickStarter.settingsManager.inventoryInteractions == InventoryInteractions.Multiple)
 				{}
 				else
 				{
@@ -1071,22 +1074,31 @@ namespace AC
 					}
 				}
 				
-				if (cameraPerspective != CameraPerspective.TwoD)
+				playerFacesHotspots = CustomGUILayout.ToggleLeft ("Player turns head to active Hotspot?", playerFacesHotspots, "AC.KickStarter.settingsManager.playerFacesHotspots");
+				if (playerFacesHotspots)
 				{
-					playerFacesHotspots = CustomGUILayout.ToggleLeft ("Player turns head to active Hotspot?", playerFacesHotspots, "AC.KickStarter.settingsManager.playerFacesHotspots");
-					if (interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction && playerFacesHotspots)
+					if (interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction)
 					{
 						onlyFaceHotspotOnSelect = CustomGUILayout.ToggleLeft ("Only turn head when select Hotspot?", onlyFaceHotspotOnSelect, "AC.KickStarter.settingsManager.onlyFaceHotspotOnSelect");
 					}
+					if (cameraPerspective == CameraPerspective.TwoD)
+					{
+						EditorGUILayout.HelpBox ("2D head-turning can be achieved with Sprites Unity Complex animation, or with Sprites Unity animation's 'Head on separate layer?' option.", MessageType.Info);
+					}
 				}
-				
+
 				hotspotIconDisplay = (HotspotIconDisplay) CustomGUILayout.EnumPopup ("Display Hotspot icons:", hotspotIconDisplay, "AC.KickStarter.settingsManager.hotspotIconDisplay");
 				if (hotspotIconDisplay != HotspotIconDisplay.Never)
 				{
+					if (hotspotIconDisplay == HotspotIconDisplay.ViaScriptOnly)
+					{
+						EditorGUILayout.HelpBox ("Call a Hotspot's 'SetIconVisibility' method to show or hide its icon.", MessageType.Info);
+					}
+
 					hotspotDrawing = (ScreenWorld) CustomGUILayout.EnumPopup ("Draw icons in:", hotspotDrawing, "AC.KickStarter.settingsManager.hotspotDrawing");
 					if (cameraPerspective != CameraPerspective.TwoD)
 					{
-						occludeIcons = CustomGUILayout.ToggleLeft ("Don't show behind Colliders?", occludeIcons, "AC.KickStarter.settingsManager.occludeIcons");
+						occludeIcons = CustomGUILayout.ToggleLeft ("Hide icons behind Colliders?", occludeIcons, "AC.KickStarter.settingsManager.occludeIcons");
 					}
 					hotspotIcon = (HotspotIcon) CustomGUILayout.EnumPopup ("Hotspot icon type:", hotspotIcon, "AC.KickStarter.settingsManager.hotspotIcon");
 					if (hotspotIcon == HotspotIcon.Texture)
@@ -1330,6 +1342,11 @@ namespace AC
 			{
 				result = SmartAddInput (result, "CycleCursors (Button)");
 
+				if (allowDefaultinteractions)
+				{
+					result = SmartAddInput (result, "DefaultInteraction (Button)");
+				}
+
 				if (KickStarter.cursorManager != null)
 				{
 					if (KickStarter.cursorManager.allowMainCursor && KickStarter.cursorManager.allowWalkCursor)
@@ -1539,9 +1556,10 @@ namespace AC
 
 		/**
 		 * <summary>Gets the default Player prefab.</summary>
+		 * <param name = "showError">If True, and no default Player is found, a warning message will be printed in the Console</param>
 		 * <returns>The default player Player prefab</returns>
 		 */
-		public Player GetDefaultPlayer ()
+		public Player GetDefaultPlayer (bool showError = true)
 		{
 			if (playerSwitching == PlayerSwitching.DoNotAllow)
 			{
@@ -1556,13 +1574,19 @@ namespace AC
 					{
 						return _player.playerOb;
 					}
-					
-					ACDebug.LogWarning ("Default Player has no prefab!");
+
+					if (showError)
+					{
+						ACDebug.LogWarning ("Default Player has no prefab!");
+					}
 					return null;
 				}
 			}
-			
-			ACDebug.LogWarning ("Cannot find default player!");
+
+			if (showError)
+			{
+				ACDebug.LogWarning ("Cannot find default player!");
+			}
 			return null;
 		}
 		
@@ -2186,12 +2210,6 @@ namespace AC
 	 * \code
 	 * AC.KickStarter.stateHandler.StartCutscene ();
 	 * AC.KickStarter.stateHandler.EndCutscene ();
-	 * \endcode
-	 * 
-	 * The StateHandler is important because it updates all of AC's scene objects. It does this by taking a record of all the objects in the scene. Therefore, if you add or remove objects from a scene mid-game through script, you will need to update the StateHandler's internal list of objects to update.  You can do this by calling:
-	 * 
-	 * \code
-	 * AC.KickStarter.stateHandler.GatherObjects ();
 	 * \endcode
 	 * 
 	 * All-scene based ActionLists, inculding Cutscenes and Triggers, derive from the ActionList class.  Action List assets rely on the ActionListAsset class.  Both classes have an Interact function, which will cause their Actions to run.

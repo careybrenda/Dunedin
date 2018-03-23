@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"PlayerInteraction.cs"
  * 
@@ -34,7 +34,7 @@ namespace AC
 		private Button button = null;
 		private int interactionIndex = -1;
 		private Hotspot manualHotspot;
-
+		private string movingToHotspotLabel = "";
 
 
 		/**
@@ -322,7 +322,14 @@ namespace AC
 
 		private Hotspot CheckHotspotValid (Hotspot hotspot)
 		{
-			if (KickStarter.settingsManager.AutoDisableUnhandledHotspots && hotspot != null)
+			if (hotspot == null) return null;
+
+			if (!hotspot.PlayerIsWithinBoundary ())
+			{
+				return null;
+			}
+
+			if (KickStarter.settingsManager.AutoDisableUnhandledHotspots)
 			{
 				if (KickStarter.runtimeInventory.SelectedItem != null)
 				{
@@ -332,6 +339,7 @@ namespace AC
 					}
 				}
 			}
+
 			return hotspot;
 		}
 		
@@ -431,7 +439,7 @@ namespace AC
 						    (KickStarter.settingsManager.MouseOverForInteractionMenu () && KickStarter.runtimeInventory.hoverItem == null && KickStarter.runtimeInventory.SelectedItem == null && clickedNew && !IsDroppingInventory ()))
 						{
 							if (KickStarter.runtimeInventory.hoverItem == null && KickStarter.playerInput.GetMouseState () == MouseState.SingleClick && 
-							    KickStarter.settingsManager.MouseOverForInteractionMenu () && KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.ClickingMenu &&
+							    KickStarter.settingsManager.MouseOverForInteractionMenu () && KickStarter.runtimeInventory.SelectedItem == null && KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.ClickingMenu &&
 							    KickStarter.settingsManager.cancelInteractions != CancelInteractions.ClickOffMenu &&
 							    !(KickStarter.runtimeInventory.SelectedItem != null && !KickStarter.settingsManager.cycleInventoryCursors))
 							{
@@ -500,8 +508,29 @@ namespace AC
 		}
 
 
+		private bool IsInvokingDefaultInteraction ()
+		{
+			if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot &&
+				KickStarter.settingsManager.allowDefaultinteractions &&
+				KickStarter.playerInput.InputGetButtonDown ("DefaultInteraction") &&
+				KickStarter.runtimeInventory.SelectedItem == null)
+			{
+				return true;
+			}
+			return false;
+		}
+
+
 		private void ContextSensitiveClick ()
 		{
+			if (hotspot != null &&
+				IsInvokingDefaultInteraction () &&
+				hotspot.provideUseInteraction)
+			{
+				UseHotspot (hotspot);
+				return;
+			}
+
 			if (CanDoDoubleTap ())
 			{
 				// Detect Hotspots only on mouse click
@@ -641,7 +670,6 @@ namespace AC
 								// Perform "Use" interaction
 								ClickButton (InteractionType.Use, -1, -1);
 							}
-
 							return;
 						}
 
@@ -665,6 +693,14 @@ namespace AC
 							// Perform "Look" interaction
 							ClickButton (InteractionType.Examine, -1, -1);
 						}
+						else
+						{
+							if (hotspot.walkToMarker)
+							{
+								ClickHotspotToWalk (hotspot.walkToMarker.transform);
+							}
+						}
+
 					}
 					else if (KickStarter.playerInput.GetMouseState () == MouseState.RightClick)
 					{
@@ -765,12 +801,15 @@ namespace AC
 
 		private void ClickHotspotToWalk (Transform walkToMarker)
 		{
-			StopMovingToHotspot ();
-			inPreInteractionCutscene = false;
-			StopCoroutine ("UseObject");
+			if (KickStarter.player)
+			{
+				KickStarter.player.ClearHeadTurnTarget (false, HeadFacing.Hotspot);
+			}
+			StopInteraction ();
+			//StopMovingToHotspot ();
+
 			KickStarter.playerInput.ResetMouseClick ();
 			KickStarter.playerInput.ResetClick ();
-			button = null;
 
 			Vector3[] pointArray = KickStarter.navigationManager.navigationEngine.GetPointsArray (KickStarter.player.transform.position, walkToMarker.position, KickStarter.player);
 			KickStarter.player.MoveAlongPoints (pointArray, false);
@@ -969,7 +1008,18 @@ namespace AC
 					{
 						KickStarter.stateHandler.gameState = GameState.Normal;
 					}
+
 					hotspotMovingTo = hotspot;
+
+					if (IsInvokingDefaultInteraction ())
+					{
+						// Special case: force default icon ID
+						movingToHotspotLabel = hotspot.GetFullLabel (Options.GetLanguage (), hotspot.GetFirstUseButton ().iconID);
+					}
+					else
+					{
+						movingToHotspotLabel = KickStarter.playerMenus.GetHotspotLabel ();
+					}
 				}
 				else
 				{
@@ -1038,8 +1088,24 @@ namespace AC
 								}
 								
 								pointArray = KickStarter.navigationManager.navigationEngine.GetPointsArray (KickStarter.player.transform.position, targetPosition, KickStarter.player);
-								KickStarter.player.MoveAlongPoints (pointArray, doRun);
-								targetPos = pointArray [pointArray.Length - 1];
+
+								if (pointArray.Length > 0)
+								{
+									KickStarter.player.MoveAlongPoints (pointArray, doRun);
+									targetPos = pointArray [pointArray.Length - 1];
+								}
+								else
+								{
+									ACDebug.LogWarning ("Cannot calculate path to Hotspot " + _hotspot.name + "'s marker.  Moving without pathfinding!", _hotspot.walkToMarker);
+									KickStarter.player.MoveToPoint (targetPosition, doRun);
+									targetPos = targetPosition;
+								}
+
+								if (KickStarter.player.retroPathfinding)
+								{
+									// Update the speed on the same frame so that we don't have a frame of zero moveSpeed
+									KickStarter.player._Update ();
+								}
 							}
 							
 							while (KickStarter.player.GetPath ())
@@ -1107,6 +1173,12 @@ namespace AC
 								else
 								{
 									targetPos = KickStarter.player.transform.position;
+								}
+
+								if (KickStarter.player.retroPathfinding)
+								{
+									// Update the speed on the same frame so that we don't have a frame of zero moveSpeed
+									KickStarter.player._Update ();
 								}
 							}
 							
@@ -1315,11 +1387,25 @@ namespace AC
 		}
 
 
-		public string GetLabelPrefix (Hotspot _hotspot, InvItem _invItem, int languageNumber = 0)
+		/**
+		 * <summary>Gets the prefix for the Hotspot label (the label without the interactive Hotspot or inventory item)</summary>
+		 * <param name = "_hotspot">The Hotspot to get the prefix label for. This will be ignored if _invItem is not null</param>
+		 * <param name = "_invItem">The Inventory Item to get the prefix label for. This will override _hotspot if not null</param>
+		 * <param name = "languageNumber">The index number of the language to return. If 0, the default language will be used</param>
+		 * <param name = "cursorID">The ID number of the cursor to rely on, if appropriate.  If <0, the active cursor will be used</param>
+		 * <returns>The prefix for the Hotspot label</summary>
+		 */
+		public string GetLabelPrefix (Hotspot _hotspot, InvItem _invItem, int languageNumber = 0, int cursorID = -1)
 		{
 			if (_invItem != null)
 			{
 				_hotspot = null;
+			}
+
+			bool isOverride = (cursorID >= 0);
+			if (cursorID < 0)
+			{
+				cursorID = KickStarter.playerCursor.GetSelectedCursorID ();
 			}
 
 			string label = "";
@@ -1342,13 +1428,13 @@ namespace AC
 				}
 				else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot)
 				{
-					label = KickStarter.cursorManager.GetLabelFromID (KickStarter.playerCursor.GetSelectedCursorID (), languageNumber);
+					label = KickStarter.cursorManager.GetLabelFromID (cursorID, languageNumber);
 				}
 				else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction)
 				{
 					if (KickStarter.settingsManager.selectInteractions == SelectInteractions.CyclingCursorAndClickingHotspot)
 					{
-						label = KickStarter.cursorManager.GetLabelFromID (KickStarter.playerCursor.GetSelectedCursorID (), languageNumber);
+						label = KickStarter.cursorManager.GetLabelFromID (cursorID, languageNumber);
 					}
 					else if (KickStarter.settingsManager.selectInteractions == SelectInteractions.CyclingMenuAndClickingHotspot)
 					{
@@ -1402,7 +1488,7 @@ namespace AC
 				}
 			}
 
-			if (KickStarter.playerCursor.GetSelectedCursor () == -1 && KickStarter.cursorManager.addWalkPrefix && !KickStarter.playerMenus.IsInteractionMenuOn ())
+			if (!isOverride && KickStarter.playerCursor.GetSelectedCursor () == -1 && KickStarter.cursorManager.addWalkPrefix && !KickStarter.playerMenus.IsInteractionMenuOn ())
 			{
 				label = KickStarter.runtimeLanguages.GetTranslation (KickStarter.cursorManager.walkPrefix.label, KickStarter.cursorManager.walkPrefix.lineID, languageNumber);
 			}
@@ -1416,6 +1502,7 @@ namespace AC
 			button = null;
 			inPreInteractionCutscene = false;
 			StopCoroutine ("UseObject");
+			hotspotMovingTo = null;
 		}
 		
 
@@ -2057,13 +2144,21 @@ namespace AC
 		}
 
 
+		/** The Hotspot label while the player is moving towards a Hotspot in order to run an interaction */
+		public string MovingToHotspotLabel
+		{
+			get
+			{
+				return movingToHotspotLabel;
+			}
+		}
+
+
 		/**
 		 * Cancels the interaction process, that involves the Player prefab moving towards the Hotspot before the Interaction itself is run.
 		 */
 		public void StopMovingToHotspot ()
 		{
-			hotspotMovingTo = null;
-
 			if (KickStarter.player)
 			{
 				KickStarter.player.EndPath ();

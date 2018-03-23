@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2016
+ *	by Chris Burton, 2013-2018
  *	
  *	"Enums.cs"
  * 
@@ -21,7 +21,7 @@ namespace AC
 	public enum ActionListSource { InScene, AssetFile };
 	public enum InteractionSource { InScene, AssetFile, CustomScript };
 	
-	public enum AppearType { Manual, MouseOver, DuringConversation, OnInputKey, OnInteraction, OnHotspot, WhenSpeechPlays, DuringGameplay, OnContainer, WhileLoading, DuringCutscene, WhileInventorySelected, ExceptWhenPaused };
+	public enum AppearType { Manual, MouseOver, DuringConversation, OnInputKey, OnInteraction, OnHotspot, WhenSpeechPlays, DuringGameplay, OnContainer, WhileLoading, DuringCutscene, WhileInventorySelected, ExceptWhenPaused, DuringGameplayAndConversations };
 	public enum SpeechMenuType { All, CharactersOnly, NarrationOnly, SpecificCharactersOnly, AllExceptSpecificCharacters };
 	public enum SpeechMenuLimit { All, BlockingOnly, BackgroundOnly };
 	public enum MenuTransition { Fade, Pan, FadeAndPan, Zoom, None };
@@ -134,9 +134,9 @@ namespace AC
 	public enum AutoManual { Automatic, Manual };
 	public enum SceneSetting { DefaultNavMesh, DefaultPlayerStart, SortingMap, OnStartCutscene, OnLoadCutscene, TintMap };
 	public enum AnimatedCameraType { PlayWhenActive, SyncWithTargetMovement };
-	public enum VarLink { None, PlaymakerGlobalVariable, OptionsData };
+	public enum VarLink { None, PlaymakerGlobalVariable, OptionsData, CustomScript };
 	
-	public enum HotspotIconDisplay { Never, Always, OnlyWhenHighlighting, OnlyWhenFlashing };
+	public enum HotspotIconDisplay { Never, Always, OnlyWhenHighlighting, OnlyWhenFlashing, ViaScriptOnly };
 	public enum HotspotIcon { Texture, UseIcon };
 	public enum OnCreateRecipe { JustMoveToInventory, SelectItem, RunActionList };
 	public enum HighlightState { None, Normal, Flash, Pulse, On };
@@ -188,7 +188,7 @@ namespace AC
 
 	public enum ManageProfileType { CreateProfile, DeleteProfile, RenameProfile, SwitchActiveProfile };
 	public enum DeleteProfileType { ActiveProfile, SetSlotIndex, SlotIndexFromVariable, SetProfileID };
-	public enum SaveCheck { NumberOfSaveGames, NumberOfProfiles, IsSavingPossible, IsSlotEmpty, DoesProfileExist };
+	public enum SaveCheck { NumberOfSaveGames, NumberOfProfiles, IsSavingPossible, IsSlotEmpty, DoesProfileExist, DoesProfileNameExist };
 	public enum ManageSaveType { DeleteSave, RenameSave };
 	public enum SelectSaveType { Autosave, SetSlotIndex, SlotIndexFromVariable };
 	public enum SaveHandling { LoadGame, ContinueFromLastSave, OverwriteExistingSave, SaveNewGame };
@@ -235,5 +235,7 @@ namespace AC
 	public enum AlignType { YAxisOnly, CopyFullRotation };
 	public enum DoubleClickMovement { MakesPlayerRun = 0, RequiredToWalk = 1, Disabled = 2 };
 	public enum MusicAction { Play, Stop, Crossfade, ResumeLastStopped };
+	public enum AngleSnapping { None=0, NinetyDegrees=1, FortyFiveDegrees=2 };
+	public enum ParallaxReactsTo { Camera, Cursor };
 
 }

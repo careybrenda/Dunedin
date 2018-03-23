@@ -94,6 +94,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 325448
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 0
@@ -102,6 +103,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items: []
   selectItemsAfterTaking: 1
   displayType: 1
@@ -343,6 +345,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -511,6 +515,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -676,6 +682,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -849,6 +857,7 @@ MonoBehaviour:
   displayType: 1
   uiHideStyle: 0
   actionListOnWrongIngredients: {fileID: 0}
+  linkUIGraphic: 0
 --- !u!114 &114172050227856450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -951,6 +960,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -1048,6 +1059,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -1374,6 +1386,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 295142
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 5
@@ -1382,6 +1395,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items: []
   selectItemsAfterTaking: 1
   displayType: 1
@@ -1439,6 +1453,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -1495,6 +1510,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -1823,6 +1839,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -1947,6 +1964,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -1999,6 +2017,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -2123,8 +2143,10 @@ MonoBehaviour:
   parameterID: -1
   newSaveText: New save
   showNewSaveOption: 1
+  hideIfNotValid: 0
   autoHandle: 1
   uiHideStyle: 0
+  linkUIGraphic: 0
 --- !u!114 &114451664037503780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2488,6 +2510,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -2563,6 +2586,7 @@ MonoBehaviour:
   alreadyChosenFontHighlightedColour: {r: 1, g: 1, b: 1, a: 1}
   showIndexNumbers: 0
   uiHideStyle: 0
+  linkUIGraphic: 0
 --- !u!114 &114589356177537334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2616,6 +2640,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -2672,6 +2697,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -2788,6 +2814,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 15091686
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 1
@@ -2796,6 +2823,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items: []
   selectItemsAfterTaking: 1
   displayType: 1
@@ -2931,6 +2959,7 @@ MonoBehaviour:
   displayType: 1
   uiHideStyle: 0
   actionListOnWrongIngredients: {fileID: 0}
+  linkUIGraphic: 0
 --- !u!114 &114685510012407332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2982,6 +3011,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -3071,7 +3102,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 245.379
-    height: 107.206
+    height: 103.09201
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
@@ -3084,6 +3115,7 @@ MonoBehaviour:
   useCharacterColour: 1
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -3277,6 +3309,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -3444,6 +3478,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -3545,6 +3581,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 707028
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 0
@@ -3553,6 +3590,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items: []
   selectItemsAfterTaking: 1
   displayType: 1
@@ -3604,6 +3642,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -3898,6 +3938,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -3994,6 +4036,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -4050,6 +4093,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -4166,6 +4210,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -4469,6 +4515,7 @@ MonoBehaviour:
   showActive: 0
   uiHideStyle: 0
   autoHandle: 1
+  linkUIGraphic: 0
   fixedOption: 0
   optionToShow: 0
   parameterID: -1
@@ -4678,7 +4725,7 @@ MonoBehaviour:
   isLocked: 0
   id: 9
   title: Subtitles
-  manualSize: {x: 31.1, y: 24.2}
+  manualSize: {x: 31.1, y: 24.200003}
   positionType: 6
   manualPosition: {x: 50.1, y: 48.6}
   positionSmoothing: 0
@@ -4701,6 +4748,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -4737,13 +4786,13 @@ MonoBehaviour:
   zoomAnchor: 4
   zoomElements: 0
   oneMenuPerSpeech: 0
-  biggestElementSize: {x: 245.379, y: 107.206}
+  biggestElementSize: {x: 245.379, y: 103.09201}
   rect:
     serializedVersion: 2
     x: 272.5995
-    y: 161.69499
+    y: 155.48999
     width: 245.379
-    height: 107.206
+    height: 103.09201
 --- !u!114 &114965387621386644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4797,6 +4846,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -4847,6 +4897,8 @@ MonoBehaviour:
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
   selected_element: {fileID: 0}
   selected_slot: 0
   autoSelectFirstVisibleElement: 0
@@ -4965,8 +5017,10 @@ MonoBehaviour:
   parameterID: -1
   newSaveText: New save
   showNewSaveOption: 1
+  hideIfNotValid: 0
   autoHandle: 1
   uiHideStyle: 0
+  linkUIGraphic: 0
 --- !u!114 &114994439934964080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5020,6 +5074,7 @@ MonoBehaviour:
   useCharacterColour: 0
   autoAdjustHeight: 1
   updateIfEmpty: 0
+  showPendingWhileMovingToHotspot: 0
   itemPropertyID: 0
   inventoryPropertyType: 0
   itemSlotNumber: 0
@@ -5106,6 +5161,7 @@ MonoBehaviour:
   - uiButton: {fileID: 0}
     uiButtonID: 1790898
     sprite: {fileID: 0}
+  uiPointerState: 0
   textEffects: 0
   outlineSize: 2
   inventoryBoxType: 0
@@ -5114,6 +5170,7 @@ MonoBehaviour:
   limitToDefinedInteractions: 1
   categoryID: -1
   categoryIDs: 
+  linkUIGraphic: 0
   items: []
   selectItemsAfterTaking: 1
   displayType: 1

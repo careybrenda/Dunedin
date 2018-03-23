@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"AdvGame.cs"
  * 
@@ -298,12 +298,6 @@ namespace AC
 				RuntimeActionList runtimeActionList = runtimeActionListObject.GetComponent <RuntimeActionList>();
 				runtimeActionList.DownloadActions (actionListAsset, endConversation, i, doSkip, addToSkipQueue);
 
-				GameObject cutsceneFolder = GameObject.Find ("_Cutscenes");
-				if (cutsceneFolder != null && cutsceneFolder.transform.position == Vector3.zero)
-				{
-					runtimeActionList.transform.parent = cutsceneFolder.transform;
-				}
-			
 				return runtimeActionList;
 			}
 			
@@ -600,6 +594,22 @@ namespace AC
 
 
 		/**
+		 * <summary>Draws an outline of a 3D Mesh in the Scene window.</summary>
+		 * <param name = "transform">The transform of the object to draw around</param>
+		 * <param name = "mesh">The Mesh to draw</param>
+		 * <param name = "color">The colour of the mesh</param>
+		 */
+		public static void DrawMeshCollider (Transform transform, Mesh mesh, Color color)
+		{
+			if (mesh != null)
+			{
+				Gizmos.color = color;
+				Gizmos.DrawMesh (mesh, 0, transform.position, transform.rotation, transform.lossyScale);
+			}
+		}
+
+
+		/**
 		 * <summary>Locates an object with a supplied ConstantID number (Unity Editor only).
 		 * If the object is not found in the current scene, all scenes in the Build Settings will be searched.
 		 * Once an object is found, it will be pinged in the Hierarchy window.</summary>
@@ -883,14 +893,14 @@ namespace AC
 			{
 				Vector2 endPos = new Vector2 (end.x + end.width / 2f + endOffset, end.y - 8);
 				DrawNodeCurve (start, endPos, color, offset, onSide, !arrangeVertically, isDisplayed);
-				Texture2D arrow = (Texture2D) AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Graphics/Textures/node-arrow.png", typeof (Texture2D));
+				Texture2D arrow = (Texture2D) AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Graphics/Textures/node-arrow.png", typeof (Texture2D));
 				GUI.Label (new Rect (endPos.x-5, endPos.y-4, 12, 16), arrow, "Label");
 			}
 			else
 			{
 				Vector2 endPos = new Vector2 (end.x - 8f, end.y + 10 + endOffset);
 				DrawNodeCurve (start, endPos, color, offset, onSide, !arrangeVertically, isDisplayed);
-				Texture2D arrow = (Texture2D) AssetDatabase.LoadAssetAtPath (Resource.mainFolderPath + "/Graphics/Textures/node-arrow-side.png", typeof (Texture2D));
+				Texture2D arrow = (Texture2D) AssetDatabase.LoadAssetAtPath (Resource.MainFolderPath + "/Graphics/Textures/node-arrow-side.png", typeof (Texture2D));
 				GUI.Label (new Rect (endPos.x-4, endPos.y-7, 16, 12), arrow, "Label");
 			}
 
@@ -1332,21 +1342,22 @@ namespace AC
 			if (clip != null && _animation != null)
 			{
 				// Initialises a clip
-				_animation.AddClip (clip, clip.name);
+				string clipName = clip.name;
+				_animation.AddClip (clip, clipName);
 				
 				if (mixingBone != null)
 				{
-					_animation [clip.name].AddMixingTransform (mixingBone);
+					_animation [clipName].AddMixingTransform (mixingBone);
 				}
 				
 				// Set up the state
 				if (_animation [clip.name])
 				{
-					_animation [clip.name].layer = layer;
-					_animation [clip.name].normalizedTime = 0f;
-					_animation [clip.name].blendMode = blendMode;
-					_animation [clip.name].wrapMode = wrapMode;
-					_animation [clip.name].enabled = true;
+					_animation [clipName].layer = layer;
+					_animation [clipName].normalizedTime = 0f;
+					_animation [clipName].blendMode = blendMode;
+					_animation [clipName].wrapMode = wrapMode;
+					_animation [clipName].enabled = true;
 				}
 			}
 		}
@@ -1410,18 +1421,15 @@ namespace AC
 		{
 			// Remove any non-playing animations
 			List <string> removeClips = new List <string>();
-			
+
 			foreach (AnimationState state in _animation)
 			{
 				if (!_animation [state.name].enabled)
 				{
 					// Queued animations get " - Queued Clone" appended to it, so remove
-					
-					int queueIndex = state.name.IndexOf (" - Queued Clone");
-					
-					if (queueIndex > 0)
+					if (state.name.Contains (queuedCloneAnimSuffix))
 					{
-						removeClips.Add (state.name.Substring (0, queueIndex));
+						removeClips.Add (state.name.Replace (queuedCloneAnimSuffix, string.Empty));
 					}
 					else
 					{
@@ -1435,23 +1443,23 @@ namespace AC
 				_animation.RemoveClip (_clip);
 			}
 		}
+		private static string queuedCloneAnimSuffix = " - Queued Clone";
 		
 
 		/**
 		 * <summary>Lerps from one float to another over time.</summary>
 		 * <param name = "from">The initial value</param>
 		 * <param name = "to">The final value</param>
-		 * <param name = "t">The time value.  If greater than 1, the result will overshoot the final value</param>
+		 * <param name = "t">The time value.  If greater than 1, the result will overshoot the final value. If less than 1, the result will undershoot the initial value</param>
 		 * <returns>The lerped float</returns>
 		 */
 		public static float Lerp (float from, float to, float t)
 		{
-			if (t <= 1)
+			if (t < 0 || t > 1)
 			{
-				return Mathf.Lerp (from, to, t);
+				return from + (to-from)*t;
 			}
-			
-			return from + (to-from)*t;
+			return Mathf.Lerp (from, to, t);
 		}
 		
 		
@@ -1459,17 +1467,16 @@ namespace AC
 		 * <summary>Lerps from one Vector3 to another over time.</summary>
 		 * <param name = "from">The initial value</param>
 		 * <param name = "to">The final value</param>
-		 * <param name = "t">The time value.  If greater than 1, the result will overshoot the final value</param>
+		 * <param name = "t">The time value.  If greater than 1, the result will overshoot the final value. If less than 1, the result will undershoot the initial value</param>
 		 * <returns>The lerped Vector3</returns>
 		 */
 		public static Vector3 Lerp (Vector3 from, Vector3 to, float t)
 		{
-			if (t <= 1)
+			if (t < 0 || t > 1)
 			{
-				return Vector3.Lerp (from, to, t);
+				return from + (to-from)*t;
 			}
-			
-			return from + (to-from)*t;
+			return Vector3.Lerp (from, to, t);
 		}
 		
 
@@ -1477,45 +1484,45 @@ namespace AC
 		 * <summary>Lerps from one Quaternion to another over time.</summary>
 		 * <param name = "from">The initial value</param>
 		 * <param name = "to">The final value</param>
-		 * <param name = "t">The time value.  If greater than 1, the result will overshoot the final value</param>
+		 * <param name = "t">The time value.  If greater than 1, the result will overshoot the final value. If less than 1, the result will undershoot the initial value</param>
 		 * <returns>The lerped Quaternion</returns>
 		 */
 		public static Quaternion Lerp (Quaternion from, Quaternion to, float t)
 		{
-			if (t <= 1)
+			if (t < 0 || t > 1)
 			{
-				return Quaternion.Lerp (from, to, t);
+				Vector3 fromVec = from.eulerAngles;
+				Vector3 toVec = to.eulerAngles;
+				
+				if (fromVec.x - toVec.x > 180f)
+				{
+					toVec.x -= 360f;
+				}
+				else if (fromVec.x - toVec.x > 180f)
+				{
+					toVec.x += 360;
+				}
+				if (fromVec.y - toVec.y < -180f)
+				{
+					toVec.y -= 360f;
+				}
+				else if (fromVec.y - toVec.y > 180f)
+				{
+					toVec.y += 360;
+				}
+				if (fromVec.z - toVec.z > 180f)
+				{
+					toVec.z -= 360f;
+				}
+				else if (fromVec.z - toVec.z > 180f)
+				{
+					toVec.z += 360;
+				}
+				
+				return Quaternion.Euler (Lerp (fromVec, toVec, t));
 			}
-			
-			Vector3 fromVec = from.eulerAngles;
-			Vector3 toVec = to.eulerAngles;
-			
-			if (fromVec.x - toVec.x > 180f)
-			{
-				toVec.x -= 360f;
-			}
-			else if (fromVec.x - toVec.x > 180f)
-			{
-				toVec.x += 360;
-			}
-			if (fromVec.y - toVec.y < -180f)
-			{
-				toVec.y -= 360f;
-			}
-			else if (fromVec.y - toVec.y > 180f)
-			{
-				toVec.y += 360;
-			}
-			if (fromVec.z - toVec.z > 180f)
-			{
-				toVec.z -= 360f;
-			}
-			else if (fromVec.z - toVec.z > 180f)
-			{
-				toVec.z += 360;
-			}
-			
-			return Quaternion.Euler (Lerp (fromVec, toVec, t));
+
+			return Quaternion.Lerp (from, to, t);
 		}
 		
 
@@ -1554,7 +1561,6 @@ namespace AC
 				}
 				float startTime = timeCurve [0].time;
 				float endTime = timeCurve [timeCurve.length - 1].time;
-				
 				return timeCurve.Evaluate ((endTime - startTime) * (Time.time - startT) / deltaT + startTime);
 			}
 			

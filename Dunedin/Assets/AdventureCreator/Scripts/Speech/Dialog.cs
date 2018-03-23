@@ -1,7 +1,7 @@
 /*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"Dialog.cs"
  * 
@@ -85,6 +85,16 @@ namespace AC
 					EndSpeech (i);
 					return;
 				}
+			}
+		}
+
+
+		/** Updates all speech volumes to the level set in Options.  This should be called whenever the Speech volume level is changed. */
+		public void UpdateSpeechVolumes ()
+		{
+			for (int i=0; i<speechList.Count; i++)
+			{
+				speechList[i].UpdateVolume ();
 			}
 		}
 
@@ -524,7 +534,9 @@ namespace AC
 			
 			if (_lipSyncMode == LipSyncMode.ReadPamelaFile && textFile != null)
 			{
-				string[] pamLines = textFile.text.Split('\n');
+				var splitFile = new string[] { "\r\n", "\r", "\n" };
+				var pamLines = textFile.text.Split (splitFile, System.StringSplitOptions.None);
+
 				bool foundSpeech = false;
 				float fps = 24f;
 				foreach (string pamLine in pamLines)
@@ -576,7 +588,9 @@ namespace AC
 			}
 			else if (_lipSyncMode == LipSyncMode.ReadSapiFile && textFile != null)
 			{
-				string[] sapiLines = textFile.text.Split('\n');
+				var splitFile = new string[] { "\r\n", "\r", "\n" };
+				var sapiLines = textFile.text.Split (splitFile, System.StringSplitOptions.None);
+
 				foreach (string sapiLine in sapiLines)
 				{
 					if (sapiLine.StartsWith ("phn "))
@@ -612,7 +626,9 @@ namespace AC
 			}
 			else if (_lipSyncMode == LipSyncMode.ReadPapagayoFile && textFile != null)
 			{
-				string[] papagoyoLines = textFile.text.Split('\n');
+				var splitFile = new string[] { "\r\n", "\r", "\n" };
+				var papagoyoLines = textFile.text.Split (splitFile, System.StringSplitOptions.None);
+
 				foreach (string papagoyoLine in papagoyoLines)
 				{
 					if (papagoyoLine != "" && !papagoyoLine.Contains ("MohoSwitch"))
@@ -640,6 +656,7 @@ namespace AC
 													int frame = KickStarter.speechManager.phonemes.IndexOf (phoneme);
 													lipSyncShapes.Add (new LipSyncShape (frame, timeIndex, KickStarter.speechManager.lipSyncSpeed, 24f));
 													found = true;
+													break;
 												}
 											}
 										}

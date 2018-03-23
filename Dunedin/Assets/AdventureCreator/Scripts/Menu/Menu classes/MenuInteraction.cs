@@ -1,7 +1,7 @@
 ﻿/*
  *
  *	Adventure Creator
- *	by Chris Burton, 2013-2017
+ *	by Chris Burton, 2013-2018
  *	
  *	"MenuInteraction.cs"
  * 
@@ -50,8 +50,10 @@ namespace AC
 		public Texture activeTexture;
 
 		private Text uiText;
+		private Image uiImage;
 		private CursorIcon icon;
 		private string label = "";
+		private bool isDefaultIcon = false;
 
 		private CursorManager cursorManager;
 
@@ -63,6 +65,7 @@ namespace AC
 		{
 			uiButton = null;
 			uiPointerState = UIPointerState.PointerClick;
+			uiImage = null;
 			uiText = null;
 			isVisible = true;
 			isClickable = true;
@@ -102,6 +105,7 @@ namespace AC
 
 			uiPointerState = _element.uiPointerState;
 			uiText = null;
+			uiImage = null;
 
 			displayType = _element.displayType;
 			anchor = _element.anchor;
@@ -125,21 +129,15 @@ namespace AC
 			uiButton = LinkUIElement <UnityEngine.UI.Button> (canvas);
 			if (uiButton)
 			{
-				if (uiButton.GetComponentInChildren <Text>())
-				{
-					uiText = uiButton.GetComponentInChildren <Text>();
-				}
+				uiText = uiButton.GetComponentInChildren <Text>();
+				uiImage = uiButton.GetComponentInChildren <Image>();
 
 				CreateUIEvent (uiButton, _menu, uiPointerState);
 			}
 		}
 
 
-		/**
-		 * <summary>Gets the linked Unity UI GameObject associated with this element.</summary>
-		 * <returns>The Unity UI GameObject associated with the element</returns>
-		 */
-		public override GameObject GetObjectToSelect ()
+		public override GameObject GetObjectToSelect (int slotIndex = 0)
 		{
 			if (uiButton)
 			{
@@ -177,7 +175,7 @@ namespace AC
 		
 		public override void ShowGUI (Menu menu)
 		{
-			string apiPrefix = "AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\")";
+			string apiPrefix = "(AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\") as AC.MenuInteraction)";
 
 			MenuSource source = menu.menuSource;
 			EditorGUILayout.BeginVertical ("Button");
@@ -252,6 +250,7 @@ namespace AC
 		#endif
 
 
+
 		/**
 		 * <summary>Performs all calculations necessary to display the element.</summary>
 		 * <param name = "_slot">Ignored by this subclass</param>
@@ -260,6 +259,16 @@ namespace AC
 		 */
 		public override void PreDisplay (int _slot, int languageNumber, bool isActive)
 		{
+			isDefaultIcon = false;
+			if (Application.isPlaying && KickStarter.stateHandler.gameState == GameState.Normal && KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot && KickStarter.settingsManager.allowDefaultinteractions)
+			{
+				if (KickStarter.runtimeInventory.SelectedItem == null && KickStarter.playerInteraction.GetActiveHotspot () != null && KickStarter.playerInteraction.GetActiveHotspot ().GetFirstUseIcon () == iconID)
+				{
+					isActive = true;
+					isDefaultIcon = true;
+				}
+			}
+
 			if (uiButton != null)
 			{
 				UpdateUISelectable (uiButton, uiSelectableHideStyle);
@@ -267,6 +276,10 @@ namespace AC
 				if (displayType != AC_DisplayType.IconOnly && uiText != null)
 				{
 					uiText.text = label;
+				}
+				if (displayType == AC_DisplayType.IconOnly && uiImage != null && icon != null && icon.isAnimated)
+				{
+					uiImage.sprite = icon.GetAnimatedSprite (isActive);
 				}
 
 				if (KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingMenuAndClickingHotspot &&
@@ -425,32 +438,18 @@ namespace AC
 		 */
 		public override void RecalculateSize (MenuSource source)
 		{
-			if (uiButton == null)
+			if (AdvGame.GetReferences ().cursorManager)
 			{
-				if (AdvGame.GetReferences ().cursorManager)
+				CursorIcon _icon = AdvGame.GetReferences ().cursorManager.GetCursorIconFromID (iconID);
+				if (_icon != null)
 				{
-					CursorIcon _icon = AdvGame.GetReferences ().cursorManager.GetCursorIconFromID (iconID);
-					if (_icon != null)
-					{
-						icon = _icon;
-						label = _icon.label;
-						icon.Reset ();
-					}
-				}
-			
-				base.RecalculateSize (source);
-			}
-			else
-			{
-				if (AdvGame.GetReferences ().cursorManager)
-				{
-					CursorIcon _icon = AdvGame.GetReferences ().cursorManager.GetCursorIconFromID (iconID);
-					if (_icon != null)
-					{
-						label = _icon.label;
-					}
+					icon = _icon;
+					label = _icon.label;
+					icon.Reset ();
 				}
 			}
+
+			base.RecalculateSize (source);
 		}
 
 
@@ -488,6 +487,18 @@ namespace AC
 			{
 				GUIContent content = new GUIContent (TranslateLabel  (label, Options.GetLanguage ()));
 				AutoSize (content);
+			}
+		}
+
+
+		/**
+		 * If using Choose Interaction Then Hotspot mode, and default interactions are enabled, then this is True if the active Hotspot's first-enabled Use interaction uses this icon
+		 */
+		public bool IsDefaultIcon
+		{
+			get
+			{
+				return isDefaultIcon;
 			}
 		}
 

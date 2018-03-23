@@ -18,6 +18,7 @@ MonoBehaviour:
   actionListType: 0
   unfreezePauseMenus: 1
   useParameters: 0
+  canRunMultipleInstances: 0
   parameters: []
   tagID: 0
 --- !u!114 &11400006
@@ -41,7 +42,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 1
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 0
@@ -96,7 +96,6 @@ MonoBehaviour:
   showOutputSockets: 1
   numSockets: 1
   willWait: 0
-  defaultPauseTime: 0.1
   isRunning: 0
   lastResult:
     resultAction: 0
